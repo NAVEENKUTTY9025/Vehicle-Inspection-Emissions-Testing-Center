@@ -36,7 +36,7 @@
       box-sizing: border-box;
     }
     
-    body {
+    html, body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-primary);
@@ -58,16 +58,20 @@
       flex-shrink: 0; /* Prevent shrinking */
     }
     
-    .brand-logo {
-      font-family: 'Merriweather', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      font-style: italic;
-      color: var(--accent);
+    /* Matched exactly with index.html */
+    .nav-logo-text {
+      font-size: 1.8rem !important;
+      font-weight: 700 !important;
+      color: var(--text-primary);
       text-decoration: none;
       letter-spacing: -0.5px;
       display: inline-block;
       line-height: 1;
+    }
+    .nav-logo-text span {
+      color: var(--accent);
+      font-style: italic;
+      font-family: 'Merriweather', serif;
     }
     
     .theme-toggle {
@@ -107,6 +111,7 @@
       line-height: 1;
       background: linear-gradient(135deg, var(--accent) 0%, #34d399 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.5rem;
     }
@@ -171,7 +176,7 @@
 
   <!-- Top Bar -->
   <div class="top-bar">
-    <a href="index.html" class="brand-logo">Apex Inspect</a>
+    <a href="index.html" class="nav-logo-text"><span>Apex Inspect</span></a>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
       <i class="fas fa-moon"></i>
     </button>
@@ -179,7 +184,7 @@
 
   <!-- Main Content -->
   <div class="not-found-container">
-    <i class="fas fa-road-barrier error-icon"></i>
+    <i class="fas fa-exclamation-triangle error-icon"></i>
     <h1 class="error-code">404</h1>
     <h2 class="error-title">Dead End</h2>
     <p class="error-desc">The page you're looking for has been moved, removed, or might never have existed. Let's get you back on the road.</p>
@@ -194,12 +199,20 @@
     const body = document.body;
     
     function updateThemeIcon(isDark) {
-      themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      if (themeToggle) {
+        themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      }
     }
 
     // Check localStorage & system preferences
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    let savedTheme = null;
+    try {
+      savedTheme = localStorage.getItem('theme');
+    } catch (e) {
+      console.warn('LocalStorage access restricted');
+    }
+
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       body.classList.add('dark');
       updateThemeIcon(true);
     } else {
@@ -207,12 +220,16 @@
     }
 
     // Toggle logic
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      const isDark = body.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateThemeIcon(isDark);
-    });
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const isDark = body.classList.contains('dark');
+        try {
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        } catch (e) {}
+        updateThemeIcon(isDark);
+      });
+    }
   </script>
 </body>
 </html>
