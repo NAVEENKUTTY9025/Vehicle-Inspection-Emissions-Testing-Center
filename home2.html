@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Apex Inspect | Premium Vehicle Inspection & Emissions Testing</title>
+  <link rel="icon" type="image/jpeg" href="images/fav.webp">
+  <meta name="description" content="State-certified vehicle safety inspections and emissions testing. Fast, reliable, no hidden fees.">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F8F8F4;
+      --bg-card: #FFFFFF;
+      --bg-nav: #FFFFFF;
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --text-muted: #6b6b6b;
+      --border-color: #e5e5e5;
+      --gold: #16A34A;
+      --gold-light: #22C55E;
+      --gold-dark: #15803D;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --nav-text: #1a1a1a;
+      --footer-text: #FFFFFF;
+      --footer-text-muted: #aaaaaa;
+      --footer-bg: #0D0D0D;
+    }
+
+    body.dark {
+      --bg-primary: #0D0D0D;
+      --bg-secondary: #0a0a0a;
+      --bg-card: #141414;
+      --bg-nav: #0D0D0D;
+      --text-primary: #FFFFFF;
+      --text-secondary: #cccccc;
+      --text-muted: #999999;
+      --border-color: #2a2a2a;
+      --gold: #16A34A;
+      --gold-light: #22C55E;
+      --shadow: 0 10px 30px rgba(0,0,0,0.5);
+      --nav-text: #FFFFFF;
+      --footer-text: #FFFFFF;
+      --footer-text-muted: #aaaaaa;
+      --footer-bg: #0D0D0D;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      scroll-behavior: smooth;
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .font-serif { font-family: 'Merriweather', serif; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeInUp 0.8s ease-out; }
+
+    /* Gold Utilities */
+    .gold-text { color: var(--gold); }
+    .btn-gold {
+      background: var(--gold);
+      color: #0D0D0D;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+    .btn-outline-gold {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.75rem 1.8rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-outline-gold:hover { background: var(--gold); color: #0D0D0D; }
+
+    /* NAVBAR */
+    .navbar {
+      background: var(--bg-nav);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .flex-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+    .nav-logo-text {
+      font-size: 1.8rem !important;
+      font-weight: 700 !important;
+      color: var(--nav-text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: inline-block;
+      line-height: 1;
+    }
+    .nav-logo-text span {
+      color: var(--gold);
+      font-style: italic;
+      font-family: 'Merriweather', serif;
+    }
+    .nav-menu-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      margin: 0 2rem;
+    }
+    .nav-links-group {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      color: var(--nav-text);
+      font-weight: 500;
+      transition: color 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-link:hover { color: var(--gold); background: rgba(22,163,74,0.15); }
+    .dropdown-container {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-btn {
+      background: none;
+      border: none;
+      color: var(--nav-text);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .dropdown-btn:hover { color: var(--gold); background: rgba(22,163,74,0.15); }
+    .dropdown-menu {
+      position: absolute;
+      left: 0;
+      margin-top: 0.5rem;
+      width: 200px;
+      background: var(--bg-card);
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      transform: translateY(10px);
+      z-index: 60;
+      border: 1px solid var(--border-color);
+    }
+    .dropdown-container:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.2rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .dropdown-menu a:hover { background: rgba(22,163,74,0.1); color: var(--gold); }
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: rgba(22,163,74,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      color: var(--nav-text);
+      border: none;
+    }
+    .icon-btn:hover { background: var(--gold); color: #0D0D0D; }
+    .login-btn {
+      background: var(--gold);
+      color: #0D0D0D;
+      padding: 0.5rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+    .login-btn:hover { background: var(--gold-light); transform: scale(1.02); }
+    
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1001;
+      position: relative;
+    }
+    .hamburger-icon, .close-icon {
+      font-size: 1.8rem;
+      color: var(--nav-text);
+      transition: all 0.3s ease;
+    }
+    .close-icon { display: none; }
+    .mobile-menu-btn.active .hamburger-icon { display: none; }
+    .mobile-menu-btn.active .close-icon { display: block; }
+    
+    .mobile-menu-panel {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      background: var(--bg-nav);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      z-index: 999;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+    }
+    .mobile-menu-panel.show {
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    .mobile-menu-inner { padding: 0.5rem 0; }
+    .mobile-nav-item { border-bottom: 1px solid rgba(22,163,74,0.1); }
+    .mobile-nav-link {
+      color: var(--nav-text);
+      text-decoration: none;
+      display: block;
+      padding: 1rem 1.5rem;
+      font-weight: 500;
+    }
+    .mobile-nav-link:hover { color: var(--gold); background: rgba(22,163,74,0.1); }
+    .mobile-dropdown-item { border-bottom: 1px solid rgba(22,163,74,0.1); }
+    .mobile-dropdown-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--nav-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .mobile-dropdown-btn:hover { color: var(--gold); background: rgba(22,163,74,0.1); }
+    .mobile-dropdown-icon { transition: transform 0.3s ease; }
+    .mobile-dropdown-icon.rotated { transform: rotate(180deg); }
+    .mobile-submenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .mobile-submenu.show { max-height: 300px; }
+    .mobile-submenu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--nav-text);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: 0.2s;
+      border-left: 2px solid transparent;
+    }
+    .mobile-submenu a:hover {
+      color: var(--gold);
+      opacity: 1;
+      border-left-color: var(--gold);
+    }
+    .mobile-login-btn {
+      display: inline-block;
+      margin: 1rem 1.5rem;
+      background: var(--gold);
+      color: #0D0D0D;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      text-align: center;
+    }
+    .mobile-theme-rtl {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid rgba(22,163,74,0.15);
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .mobile-icon-btn {
+      background: rgba(22,163,74,0.2);
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      color: var(--nav-text);
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mobile-icon-btn:hover { background: var(--gold); color: #0D0D0D; }
+
+    /* Container */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
+    .section-title {
+      font-size: 3rem;
+      font-family: 'Merriweather', serif;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    .gold-divider {
+      width: 70px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0.8rem auto 2rem;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    /* ============================================== */
+    /* SECTION 1 — HERO WITH STATS ON RIGHT          */
+    /* ============================================== */
+    .hero2 {
+      min-height: 100vh;
+      padding-top: 80px;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero2-overlay {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2083&auto=format') center/cover no-repeat;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .hero2-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+    .hero2-text .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(22,163,74,0.12);
+      color: var(--gold);
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.5rem;
+    }
+    .hero2-text h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+    .hero2-text p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+    .hero2-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .hero2-stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      transition: all 0.3s;
+    }
+    .hero2-stat-card:hover {
+      transform: translateX(6px);
+      border-color: var(--gold);
+      box-shadow: var(--shadow);
+    }
+    .hero2-stat-icon {
+      width: 55px;
+      height: 55px;
+      background: rgba(22,163,74,0.12);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .hero2-stat-card h3 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .hero2-stat-card p {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .hero2-content { grid-template-columns: 1fr; gap: 3rem; }
+      .hero2-text h1 { font-size: 2.8rem; }
+    }
+    @media (max-width: 768px) {
+      .hero2-text h1 { font-size: 2.2rem; }
+    }
+
+    /* ============================================== */
+    /* SECTION 2 — PROCESS TIMELINE                  */
+    /* ============================================== */
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      position: relative;
+      margin-top: 3rem;
+    }
+    .process-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2.2rem 1.8rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .process-step:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+    .process-step-number {
+      width: 60px;
+      height: 60px;
+      background: var(--gold);
+      color: #0D0D0D;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin: 0 auto 1.5rem;
+    }
+    .process-step-icon {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .process-step h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .process-step p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+
+    /* ============================================== */
+    /* SECTION 3 — ZIG-ZAG FEATURE                   */
+    /* ============================================== */
+    .zigzag-row {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+    .zigzag-row:last-child { margin-bottom: 0; }
+    .zigzag-row.reverse { flex-direction: row-reverse; }
+    .zigzag-text { flex: 1; min-width: 280px; }
+    .zigzag-text .feature-tag {
+      display: inline-block;
+      background: rgba(22,163,74,0.12);
+      color: var(--gold);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+    .zigzag-text h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+    }
+    .zigzag-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .zigzag-list {
+      list-style: none;
+      margin-bottom: 1.8rem;
+    }
+    .zigzag-list li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 0.8rem;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+    .zigzag-list i { color: var(--gold); margin-top: 4px; }
+    .zigzag-visual {
+      flex: 1;
+      min-width: 280px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .zigzag-visual::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gold);
+    }
+    .zigzag-visual i.main-icon {
+      font-size: 4rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .zigzag-visual h4 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .zigzag-visual p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .zigzag-visual .visual-stat {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .zigzag-visual .visual-stat div {
+      text-align: center;
+    }
+    .zigzag-visual .visual-stat strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--gold);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .zigzag-visual .visual-stat span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .zigzag-row, .zigzag-row.reverse { flex-direction: column; gap: 2rem; }
+      .zigzag-text h3 { font-size: 1.8rem; }
+    }
+
+    /* ============================================== */
+    /* SECTION 4 — PRICING TIERS                     */
+    /* ============================================== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+    .pricing-card.featured {
+      border: 2px solid var(--gold);
+      transform: scale(1.03);
+    }
+    .pricing-card.featured:hover {
+      transform: scale(1.03) translateY(-8px);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #0D0D0D;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+    }
+    .pricing-card h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-card .pricing-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.8rem;
+    }
+    .pricing-price {
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .pricing-price span {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .pricing-period {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-bottom: 2rem;
+    }
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+    .pricing-features li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features i { color: var(--gold); font-size: 0.85rem; }
+    .pricing-features i.fa-times { color: var(--text-muted); }
+
+    /* ============================================== */
+    /* SECTION 5 — TESTIMONIALS GRID                 */
+    /* ============================================== */
+    .testimonial-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .testimonial-card-2 {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .testimonial-card-2:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+    .testimonial-card-2::before {
+      content: '"';
+      position: absolute;
+      top: 0.5rem;
+      right: 1.5rem;
+      font-family: 'Merriweather', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      letter-spacing: 3px;
+    }
+    .testimonial-card-2 p.quote {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .testimonial-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #0D0D0D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .testimonial-author-info h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 0.15rem;
+    }
+    .testimonial-author-info span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================== */
+    /* SECTION 6 — CTA WITH GRID BACKGROUND          */
+    /* ============================================== */
+    .cta-grid-section {
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-grid-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(22,163,74,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22,163,74,0.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--gold);
+      padding: 4rem 3rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .cta-inner h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .cta-inner p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-inner .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-inner .cta-note {
+      margin-top: 1.8rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .cta-inner .cta-note i { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .cta-inner { padding: 2.5rem 1.5rem; }
+      .cta-inner h2 { font-size: 1.8rem; }
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--footer-bg);
+      padding-top: 80px;
+      padding-bottom: 40px;
+      border-top: 1px solid rgba(22,163,74,0.2);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .footer-col h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      color: var(--footer-text);
+    }
+    .footer-col a {
+      display: block;
+      color: var(--footer-text-muted);
+      text-decoration: none;
+      margin-bottom: 0.6rem;
+      transition: 0.2s;
+      font-size: 0.85rem;
+    }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-col p { color: var(--footer-text-muted); line-height: 1.6; }
+    .footer-col span { color: var(--footer-text-muted); }
+    .footer-logo {
+      font-size: 1.8rem !important;
+      font-weight: 700 !important;
+      color: var(--footer-text) !important;
+      text-decoration: none !important;
+      letter-spacing: -0.5px !important;
+      display: inline-block !important;
+      line-height: 1 !important;
+      margin-bottom: 1rem !important;
+    }
+    .footer-logo span {
+      color: var(--gold) !important;
+      font-style: italic !important;
+      font-family: 'Merriweather', serif !important;
+    }
+    .social-icons a {
+      display: inline-block;
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      color: var(--footer-text-muted);
+      transition: 0.2s;
+    }
+    .social-icons a:hover { color: var(--gold); }
+    .footer-contact-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+    .footer-contact-item i {
+      color: var(--gold);
+      margin-top: 2px;
+      min-width: 16px;
+    }
+    .footer-contact-item span, .footer-contact-item a {
+      color: var(--footer-text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .footer-contact-item a:hover { color: var(--gold); }
+    .footer-copyright {
+      border-top: 1px solid rgba(22,163,74,0.15);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--footer-text-muted);
+      font-size: 0.8rem;
+    }
+    .footer-copyright a {
+      color: var(--footer-text-muted);
+      text-decoration: none;
+      margin-right: 1rem;
+      transition: 0.2s;
+    }
+    .footer-copyright a:hover { color: var(--gold); }
+
+    /* Responsive */
+    @media (max-width: 1180px) {
+      .nav-menu-container, .nav-buttons { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
+    @media (max-width: 1024px) {
+      .section-title { font-size: 2.5rem; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 2rem; }
+      .container { padding: 0 1rem; }
+      section { padding: 60px 0; }
+      .footer-logo { font-size: 1.8rem !important; }
+    }
+    @media (max-width: 480px) {
+      .btn-gold, .btn-outline-gold { padding: 0.6rem 1.2rem; font-size: 0.75rem; }
+      .mobile-theme-rtl { flex-direction: column; }
+      .footer-copyright { flex-direction: column; text-align: center; }
+    }
+    
+    /* Active Nav Link */
+    .nav-link.active,
+    .dropdown-menu a.active,
+    .mobile-nav-link.active,
+    .mobile-submenu a.active {
+      color: var(--gold) !important;
+      background: rgba(22,163,74,0.15);
+    }
+    .nav-link.active { border-bottom: 2px solid var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="flex-nav">
+      <div class="flex-shrink-0">
+        <a href="index.html" class="nav-logo-text"><span>Apex Inspect</span></a>
+      </div>
+      <div class="nav-menu-container">
+        <div class="nav-links-group">
+          <div class="dropdown-container">
+            <button class="dropdown-btn">Home <i class="fas fa-chevron-down"></i></button>
+            <div class="dropdown-menu">
+              <a href="index.html">Home 1</a>
+              <a href="home2.html" class="active">Home 2</a>
+            </div>
+          </div>
+          <a href="services.html" class="nav-link">Services</a>
+          <a href="emissions.html" class="nav-link">Emissions</a>
+          <a href="locations.html" class="nav-link">Locations</a>
+          <a href="faq.html" class="nav-link">FAQ</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <div class="dropdown-container">
+            <button class="dropdown-btn">Portal <i class="fas fa-chevron-down"></i></button>
+            <div class="dropdown-menu">
+              <a href="admin.html">Admin Dashboard</a>
+              <a href="user.html">Vendor Dashboard</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <a href="login.html" class="login-btn"> Login</a>
+        <a href="register.html" class="login-btn"> Register</a>
+        <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
+        <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
+      </div>
+      
+      <button id="mobile-menu-btn" class="mobile-menu-btn">
+        <i class="fas fa-bars hamburger-icon"></i>
+        <i class="fas fa-times close-icon"></i>
+      </button>
+    </div>
+  </div>
+  
+  <div id="mobile-menu-panel" class="mobile-menu-panel">
+    <div class="mobile-menu-inner">
+      <div class="mobile-dropdown-item">
+        <button class="mobile-dropdown-btn" data-dropdown="home-dropdown">
+          Home <i class="fas fa-chevron-down mobile-dropdown-icon" id="home-dropdown-icon"></i>
+        </button>
+        <div class="mobile-submenu" id="home-submenu">
+          <a href="index.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </div>
+      <div class="mobile-nav-item"><a href="services.html" class="mobile-nav-link">Services</a></div>
+      <div class="mobile-nav-item"><a href="emissions.html" class="mobile-nav-link">Emissions</a></div>
+      <div class="mobile-nav-item"><a href="locations.html" class="mobile-nav-link">Locations</a></div>
+      <div class="mobile-nav-item"><a href="faq.html" class="mobile-nav-link">FAQ</a></div>
+      <div class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></div>
+      <div class="mobile-dropdown-item">
+        <button class="mobile-dropdown-btn" data-dropdown="portal-dropdown">
+          Portal <i class="fas fa-chevron-down mobile-dropdown-icon" id="portal-dropdown-icon"></i>
+        </button>
+        <div class="mobile-submenu" id="portal-submenu">
+          <a href="admin.html">Admin Dashboard</a>
+          <a href="user.html">Vendor Dashboard</a>
+        </div>
+      </div>
+      <div class="mobile-nav-item">
+        <a href="login.html" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="register.html" class="mobile-login-btn"><i class="fas fa-user-plus"></i> Register</a>
+      </div>
+      <div class="mobile-theme-rtl">
+        <button id="mobile-theme-toggle" class="mobile-icon-btn"><i class="fas fa-moon"></i> Theme</button>
+        <button id="mobile-rtl-toggle" class="mobile-icon-btn"><i class="fas fa-exchange-alt"></i> RTL</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================== -->
+<!-- SECTION 1 — HERO WITH STATS ON RIGHT          -->
+<!-- ============================================== -->
+<section class="hero2">
+  <div class="hero2-overlay"></div>
+  <div class="container">
+    <div class="hero2-content animate-fade-in">
+      <div class="hero2-text">
+        <div class="hero-badge"><i class="fas fa-award"></i> Trusted Since 2005</div>
+        <h1>Vehicle Inspections <span class="gold-text">Reimagined</span> for the Modern Driver</h1>
+        <p>Skip the waiting room. Get your safety inspection, emissions test, or VIN verification done in under 15 minutes at any of our state-of-the-art facilities.</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="book.html" class="btn-gold">Book Now <i class="fas fa-arrow-right"></i></a>
+          <a href="services.html" class="btn-outline-gold">Our Services</a>
+        </div>
+      </div>
+      <div class="hero2-stats">
+        <div class="hero2-stat-card">
+          <div class="hero2-stat-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h3>15 Min</h3>
+            <p>Average Wait Time</p>
+          </div>
+        </div>
+        <div class="hero2-stat-card">
+          <div class="hero2-stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h3>8+</h3>
+            <p>Locations Nationwide</p>
+          </div>
+        </div>
+        <div class="hero2-stat-card">
+          <div class="hero2-stat-icon"><i class="fas fa-certificate"></i></div>
+          <div>
+            <h3>100%</h3>
+            <p>State Certified</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- SECTION 2 — PROCESS TIMELINE                  -->
+<!-- ============================================== -->
+<section style="background: var(--bg-secondary);">
+  <div class="container">
+    <h2 class="section-title">Four Simple <span class="gold-text">Steps</span></h2>
+    <div class="gold-divider"></div>
+    <p class="section-sub">From booking to driving out with your certificate — the whole process takes under 20 minutes.</p>
+    
+    <div class="process-timeline">
+      <div class="process-step">
+        <div class="process-step-number">1</div>
+        <div class="process-step-icon"><i class="fas fa-calendar-check"></i></div>
+        <h3>Book Online</h3>
+        <p>Choose your station, service, and time. Booking takes under 60 seconds.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">2</div>
+        <div class="process-step-icon"><i class="fas fa-car"></i></div>
+        <h3>Drive In</h3>
+        <p>Pull into any of our stations. No appointment needed for most vehicles.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">3</div>
+        <div class="process-step-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>We Inspect</h3>
+        <p>Certified technicians run your inspection using calibrated equipment.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">4</div>
+        <div class="process-step-icon"><i class="fas fa-file-certificate"></i></div>
+        <h3>Get Certified</h3>
+        <p>Receive your certificate instantly. We file with the DMV for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- SECTION 3 — ZIG-ZAG FEATURE                   -->
+<!-- ============================================== -->
+<section>
+  <div class="container">
+
+    <!-- Row 1 -->
+    <div class="zigzag-row">
+      <div class="zigzag-text">
+        <span class="feature-tag">Safety First</span>
+        <h3>Complete Safety Inspections You Can <span class="gold-text">Trust</span></h3>
+        <p>Our state-certified technicians check every critical system — brakes, lights, tires, steering, and more — using calibrated equipment.</p>
+        <ul class="zigzag-list">
+          <li><i class="fas fa-check-circle"></i><span>Brake pads, rotors, lines & fluid</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Headlights, taillights, turn signals</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Tread depth, pressure & tire condition</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Steering, suspension & alignment check</span></li>
+        </ul>
+        <a href="services.html" class="btn-outline-gold">Explore Safety Inspections <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="zigzag-visual">
+        <i class="fas fa-shield-alt main-icon"></i>
+        <h4>Safety Certified</h4>
+        <p>Every inspection backed by our 100% pass guarantee or free retest within 30 days.</p>
+        <div class="visual-stat">
+          <div><strong>50K+</strong><span>Inspections</span></div>
+          <div><strong>4.9★</strong><span>Rating</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 (reversed) -->
+    <div class="zigzag-row reverse">
+      <div class="zigzag-text">
+        <span class="feature-tag">Go Green</span>
+        <h3>Emissions Testing <span class="gold-text">Done Right</span> Every Time</h3>
+        <p>Fast, accurate emissions testing using state-of-the-art OBD-II and tailpipe analyzers. We report results directly to the DMV electronically.</p>
+        <ul class="zigzag-list">
+          <li><i class="fas fa-check-circle"></i><span>OBD-II scan for 1996+ vehicles</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Tailpipe testing for older models</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Immediate pass/fail results</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Free retest within 30 days if failed</span></li>
+        </ul>
+        <a href="emissions.html" class="btn-outline-gold">Explore Emissions Testing <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="zigzag-visual">
+        <i class="fas fa-leaf main-icon"></i>
+        <h4>Eco Certified</h4>
+        <p>Our emissions testing keeps you compliant with all state and federal environmental regulations.</p>
+        <div class="visual-stat">
+          <div><strong>10 Min</strong><span>Avg. Test</span></div>
+          <div><strong>100%</strong><span>DMV Reported</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- SECTION 4 — PRICING TIERS                     -->
+<!-- ============================================== -->
+<section style="background: var(--bg-secondary);">
+  <div class="container">
+    <h2 class="section-title">Simple, Transparent <span class="gold-text">Pricing</span></h2>
+    <div class="gold-divider"></div>
+    <p class="section-sub">No hidden fees. No upsells. Just honest, upfront pricing for every inspection.</p>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <h3>Basic</h3>
+        <p class="pricing-desc">Perfect for a quick emissions test</p>
+        <div class="pricing-price"><span>$</span>29<span>.99</span></div>
+        <div class="pricing-period">Per inspection</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> OBD-II or tailpipe emissions test</li>
+          <li><i class="fas fa-check"></i> Instant pass/fail results</li>
+          <li><i class="fas fa-check"></i> Electronic DMV reporting</li>
+          <li><i class="fas fa-check"></i> Free retest within 30 days</li>
+          <li><i class="fas fa-times"></i> Safety inspection</li>
+          <li><i class="fas fa-times"></i> VIN verification</li>
+        </ul>
+        <a href="book.html" class="btn-outline-gold" style="justify-content:center;">Choose Basic</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <span class="pricing-badge">Most Popular</span>
+        <h3>Complete</h3>
+        <p class="pricing-desc">Emissions + full safety inspection</p>
+        <div class="pricing-price"><span>$</span>59<span>.99</span></div>
+        <div class="pricing-period">Per inspection</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Complete safety inspection</li>
+          <li><i class="fas fa-check"></i> Emissions test included</li>
+          <li><i class="fas fa-check"></i> Instant electronic DMV filing</li>
+          <li><i class="fas fa-check"></i> Free retest within 30 days</li>
+          <li><i class="fas fa-check"></i> Priority lane access</li>
+          <li><i class="fas fa-times"></i> VIN verification</li>
+        </ul>
+        <a href="book.html" class="btn-gold" style="justify-content:center;">Choose Complete</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Premium</h3>
+        <p class="pricing-desc">Everything for a full vehicle check</p>
+        <div class="pricing-price"><span>$</span>89<span>.99</span></div>
+        <div class="pricing-period">Per inspection</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Full safety inspection</li>
+          <li><i class="fas fa-check"></i> Emissions test included</li>
+          <li><i class="fas fa-check"></i> VIN verification</li>
+          <li><i class="fas fa-check"></i> Instant electronic DMV filing</li>
+          <li><i class="fas fa-check"></i> Free retest within 30 days</li>
+          <li><i class="fas fa-check"></i> Priority lane + free re-inspection</li>
+        </ul>
+        <a href="book.html" class="btn-outline-gold" style="justify-content:center;">Choose Premium</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- SECTION 5 — TESTIMONIALS GRID                 -->
+<!-- ============================================== -->
+<section>
+  <div class="container">
+    <h2 class="section-title">What Our Customers <span class="gold-text">Say</span></h2>
+    <div class="gold-divider"></div>
+    <p class="section-sub">Over 50,000 satisfied customers trust Apex Inspect for their vehicle needs.</p>
+
+    <div class="testimonial-grid-2">
+
+      <div class="testimonial-card-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="quote">Fastest inspection I've ever had. In and out in 12 minutes, and they filed everything with the DMV for me. Highly recommend.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RS</div>
+          <div class="testimonial-author-info">
+            <h4>Rahul Sharma</h4>
+            <span>Mumbai, Maharashtra</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="quote">I manage a fleet of 40 vehicles and Apex Inspect has been a game changer. Volume discounts, priority scheduling, and their reporting is flawless.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PK</div>
+          <div class="testimonial-author-info">
+            <h4>Priya Kapoor</h4>
+            <span>Fleet Manager, Pune</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="quote">My imported car needed VIN verification and Apex handled everything — customs docs, FMVSS compliance, registration paperwork. Total lifesavers.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AM</div>
+          <div class="testimonial-author-info">
+            <h4>Arjun Mehta</h4>
+            <span>Thane, Maharashtra</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="quote">Had a check engine light and was worried about failing emissions. Their technician diagnosed the issue, recommended a fix, and I passed on retest. Zero stress.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SN</div>
+          <div class="testimonial-author-info">
+            <h4>Sneha Nair</h4>
+            <span>Navi Mumbai</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="quote">Brought my vintage motorcycle in for inspection. The team knew exactly what they were doing and treated my bike with real care. Passed with flying colors.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">VJ</div>
+          <div class="testimonial-author-info">
+            <h4>Vikram Joshi</h4>
+            <span>Nashik, Maharashtra</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="quote">Booked online, showed up 5 minutes early, and was driving out with my certificate in 15 minutes. This is how vehicle inspections should work.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MR</div>
+          <div class="testimonial-author-info">
+            <h4>Meera Reddy</h4>
+            <span>Pune, Maharashtra</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- SECTION 6 — CTA WITH GRID BACKGROUND          -->
+<!-- ============================================== -->
+<section class="cta-grid-section" style="border-bottom:none;">
+  <div class="container">
+    <div class="cta-inner">
+      <h2>Ready to Get <span class="gold-text">Inspected?</span></h2>
+      <p>Book your appointment online in under 2 minutes. Walk-ins welcome. No hidden fees, certified results, DMV filed for you.</p>
+      <div class="cta-buttons">
+        <a href="book.html" class="btn-gold">Book Appointment <i class="fas fa-arrow-right"></i></a>
+        <a href="locations.html" class="btn-outline-gold">Find a Location</a>
+      </div>
+      <div class="cta-note">
+        <i class="fas fa-shield-alt"></i> Trusted by 50,000+ vehicle owners across the region
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="#" class="footer-logo"><span>Apex Inspect</span></a>
+        <p style="margin-top: 0.5rem;">Official state vehicle inspections & emissions testing. Fast, certified, and reliable service you can trust.</p>
+        <div class="social-icons" style="margin-top: 1.5rem;">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="services.html">Services</a>
+        <a href="emissions.html">Emissions</a>
+        <a href="locations.html">Locations</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="faq.html">Inspection FAQ</a>
+        <a href="book.html">Book Appointment</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Visit Station</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Suite 45, Creators Block, Mumbai, India</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+919876543210">+91 98765 43210</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:hello@apexinspect.com">hello@apexinspect.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <p>© 2026 Apex Inspect. All rights reserved.</p>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Dark Mode Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  const body = document.body;
+  
+  function updateThemeIcon(isDark) {
+    if (themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    if (mobileThemeToggle) mobileThemeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> Theme' : '<i class="fas fa-moon"></i> Theme';
+  }
+  
+  function toggleTheme() {
+    if (body.classList.contains('dark')) {
+      body.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      updateThemeIcon(false);
+    } else {
+      body.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      updateThemeIcon(true);
+    }
+  }
+  
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    body.classList.add('dark');
+    updateThemeIcon(true);
+  } else if (savedTheme === 'light') {
+    body.classList.remove('dark');
+    updateThemeIcon(false);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    body.classList.add('dark');
+    updateThemeIcon(true);
+  }
+  
+  if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+  
+  // RTL Toggle
+  const rtlToggle = document.getElementById('rtl-toggle');
+  const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+  const htmlElement = document.documentElement;
+  
+  function toggleRTL() {
+    if (htmlElement.getAttribute('dir') === 'rtl') {
+      htmlElement.removeAttribute('dir');
+      localStorage.setItem('direction', 'ltr');
+    } else {
+      htmlElement.setAttribute('dir', 'rtl');
+      localStorage.setItem('direction', 'rtl');
+    }
+  }
+  
+  if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+  if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+  
+  const savedDirection = localStorage.getItem('direction');
+  if (savedDirection === 'rtl') htmlElement.setAttribute('dir', 'rtl');
+  
+  // Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobilePanel = document.getElementById('mobile-menu-panel');
+  
+  function toggleMobileMenu() {
+    mobilePanel.classList.toggle('show');
+    mobileMenuBtn.classList.toggle('active');
+    document.body.style.overflow = mobilePanel.classList.contains('show') ? 'hidden' : '';
+  }
+  
+  if (mobileMenuBtn && mobilePanel) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    document.querySelectorAll('.mobile-nav-link, .mobile-login-btn').forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobilePanel.classList.contains('show')) toggleMobileMenu();
+      });
+    });
+  }
+  
+  // Mobile Dropdown Toggle
+  document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const submenu = this.nextElementSibling;
+      const icon = this.querySelector('.mobile-dropdown-icon');
+      document.querySelectorAll('.mobile-submenu').forEach(menu => {
+        if (menu !== submenu) menu.classList.remove('show');
+      });
+      document.querySelectorAll('.mobile-dropdown-icon').forEach(i => {
+        if (i !== icon) i.classList.remove('rotated');
+      });
+      submenu.classList.toggle('show');
+      icon.classList.toggle('rotated');
+    });
+  });
+  
+  // Smooth Scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (mobilePanel && mobilePanel.classList.contains('show')) toggleMobileMenu();
+      }
+    });
+  });
+  
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1180 && mobilePanel && mobilePanel.classList.contains('show')) {
+      toggleMobileMenu();
+    }
+  });
+  
+  // Active Nav Highlight
+  const currentPage = window.location.pathname.split("/").pop();
+  document.querySelectorAll('a').forEach(link => {
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    }
+  });
+</script>
+</body>
+</html>
