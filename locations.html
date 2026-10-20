@@ -3,871 +3,574 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Locations | Apex Inspect | Vehicle Inspection & Emissions Testing</title>
+  <title>Apex Inspect | Testing Station Locations & Drive-Thru Lanes</title>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <meta name="description" content="Find an Apex Inspect station near you. Multiple convenient locations with state-certified vehicle inspections and emissions testing.">
+  <meta name="description" content="Find state-certified Apex Inspect stations near you. Drive-thru inspection lanes, live wait times, hours, and directions.">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* Reset & Base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Light mode (default) */
     :root {
       --bg-primary: #FFFFFF;
-      --bg-secondary: #F8F8F4;
+      --bg-secondary: #F8FAFC;
       --bg-card: #FFFFFF;
-      --bg-nav: #FFFFFF;
-      --text-primary: #1a1a1a;
-      --text-secondary: #4a4a4a;
-      --text-muted: #6b6b6b;
-      --border-color: #e5e5e5;
-      --gold: #16A34A;
-      --gold-light: #22C55E;
-      --gold-dark: #15803D;
-      --shadow: 0 10px 30px rgba(0,0,0,0.08);
-      --nav-text: #1a1a1a;
-      --footer-text: #FFFFFF;
-      --footer-text-muted: #aaaaaa;
-      --footer-bg: #0D0D0D;
-      --input-bg: #FAFAFA;
+      --bg-card-hover: #F1F5F9;
+      --bg-nav: rgba(255, 255, 255, 0.95);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      
+      --brand-blue: #1D4ED8;
+      --brand-blue-light: #3B82F6;
+      --brand-blue-hover: #1E40AF;
+      --brand-navy: #0F172A;
+      --brand-emerald: #1D4ED8;
+      --brand-emerald-light: #3B82F6;
+      --brand-amber: #1D4ED8;
+      
+      --gold: #1D4ED8;
+      --gold-light: #3B82F6;
+      --gold-dark: #1E40AF;
+      
+      --badge-blue: #EFF6FF;
+      --badge-blue-text: #1D4ED8;
+      --badge-blue: #EFF6FF;
+      --badge-blue-text: #1D4ED8;
+      
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.07), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 30px -10px rgba(15, 23, 42, 0.12);
+      
+      --nav-text: #0F172A;
+      --footer-text: #F8FAFC;
+      --footer-text-muted: #94A3B8;
+      --footer-bg: #0B132B;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
     }
 
-    /* Dark mode */
     body.dark {
-      --bg-primary: #0D0D0D;
-      --bg-secondary: #0a0a0a;
-      --bg-card: #141414;
-      --bg-nav: #0D0D0D;
-      --text-primary: #FFFFFF;
-      --text-secondary: #cccccc;
-      --text-muted: #999999;
-      --border-color: #2a2a2a;
-      --gold: #16A34A;
-      --gold-light: #22C55E;
-      --shadow: 0 10px 30px rgba(0,0,0,0.5);
-      --nav-text: #FFFFFF;
-      --footer-text: #FFFFFF;
-      --footer-text-muted: #aaaaaa;
-      --footer-bg: #0D0D0D;
-      --input-bg: #1a1a1a;
+      --bg-primary: #0B132B;
+      --bg-secondary: #111D3A;
+      --bg-card: #162447;
+      --bg-card-hover: #1C2D56;
+      --bg-nav: rgba(11, 19, 43, 0.95);
+      --text-primary: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #94A3B8;
+      --border-color: #23355C;
+      
+      --brand-blue: #3B82F6;
+      --brand-blue-light: #60A5FA;
+      --brand-blue-hover: #2563EB;
+      --brand-navy: #0F172A;
+      --brand-emerald: #3B82F6;
+      --brand-emerald-light: #60A5FA;
+      --brand-amber: #3B82F6;
+      
+      --gold: #3B82F6;
+      --gold-light: #60A5FA;
+      --gold-dark: #2563EB;
+      
+      --badge-blue: rgba(59, 130, 246, 0.15);
+      --badge-blue-text: #93C5FD;
+      --badge-blue: rgba(59, 130, 246, 0.15);
+      --badge-blue-text: #93C5FD;
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.7);
+      
+      --nav-text: #F8FAFC;
+      --footer-text: #F8FAFC;
+      --footer-text-muted: #94A3B8;
+      --footer-bg: #070D1E;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-primary);
       scroll-behavior: smooth;
-      line-height: 1.5;
+      line-height: 1.6;
       transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .font-serif {
-      font-family: 'Merriweather', serif;
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+        /* Exact Brand Logo matching login.html */
+    .brand-logo, .nav-logo-text {
+      font-family: 'Merriweather', serif !important;
+      font-size: 1.8rem !important;
+      font-weight: 700 !important;
+      color: var(--nav-text) !important;
+      text-decoration: none !important;
+      letter-spacing: -0.5px !important;
+      line-height: 1 !important;
+      display: inline-block !important;
+      transition: color 0.2s ease;
     }
-    .animate-fade-in { animation: fadeInUp 0.8s ease-out; }
+    .brand-logo span, .nav-logo-text span {
+      color: var(--brand-blue) !important;
+      font-style: italic !important;
+      font-family: 'Merriweather', serif !important;
+    }
+    .brand-logo:hover, .nav-logo-text:hover {
+      color: var(--brand-blue) !important;
+    }
+    @media (max-width: 640px) {
+      .brand-logo, .nav-logo-text {
+        font-size: 1.4rem !important;
+      }
+    }
 
-    /* Gold Utilities */
-    .gold-text { color: var(--gold); }
-    .gold-border { border-color: var(--gold); }
-    .gold-bg { background-color: var(--gold); }
-    
-    .btn-gold {
-      background: var(--gold);
-      color: #0D0D0D;
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Buttons */
+    .btn-gold, .btn-primary {
+      background: var(--brand-blue);
+      color: #FFFFFF !important;
       font-weight: 600;
-      padding: 0.85rem 2rem;
-      border-radius: 0;
-      transition: all 0.3s ease;
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--radius-md);
+      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      border: 1px solid var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.85rem;
+      gap: 8px;
+      border: 1px solid var(--brand-blue);
+      font-size: 0.88rem;
       cursor: pointer;
       text-decoration: none;
+      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.25);
     }
-    .btn-gold:hover {
-      background: transparent;
-      color: var(--gold);
+    .btn-gold:hover, .btn-primary:hover {
+      background: var(--brand-blue-hover);
+      border-color: var(--brand-blue-hover);
+      transform: translateY(-2px);
     }
-    .btn-outline-gold {
+
+    .btn-outline-gold, .btn-outline {
       background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 0.75rem 1.8rem;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      letter-spacing: 0.5px;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-primary) !important;
+      padding: 0.72rem 1.5rem;
+      border-radius: var(--radius-md);
+      transition: all 0.25s ease;
+      font-weight: 600;
+      font-size: 0.88rem;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       cursor: pointer;
       text-decoration: none;
     }
-    .btn-outline-gold:hover {
-      background: var(--gold);
-      color: #0D0D0D;
+    .btn-outline-gold:hover, .btn-outline:hover {
+      border-color: var(--brand-blue);
+      color: var(--brand-blue) !important;
+      background: rgba(29, 78, 216, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .badge-blue { background: var(--badge-blue); color: var(--badge-blue-text); }
+    .badge-blue { background: var(--badge-blue); color: var(--badge-blue-text); }
+
+    section { padding: 85px 0; border-bottom: 1px solid var(--border-color); }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 0.8rem;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .brand-divider {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand-blue), var(--brand-blue-light));
+      border-radius: 4px;
+      margin: 0.75rem auto 1.5rem;
     }
 
     /* NAVBAR */
     .navbar {
       background: var(--bg-nav);
+      backdrop-filter: blur(12px);
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      border-bottom: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-bottom: 1px solid var(--border-color);
     }
-    .nav-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    .nav-container { max-width: 1380px; margin: 0 auto; padding: 0 1.5rem; }
+    .flex-nav { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+    .nav-logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--brand-blue), #2563EB);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #FFFFFF; font-size: 1.25rem;
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
     }
-    .flex-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 80px;
-    }
-    .nav-logo-text {
-      font-size: 1.8rem !important;
-      font-weight: 700 !important;
-      color: var(--nav-text);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-      display: inline-block;
-      line-height: 1;
-    }
-    .nav-logo-text span {
-      color: var(--gold);
-      font-style: italic;
-      font-family: 'Merriweather', serif;
-    }
-    .nav-menu-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-      margin: 0 2rem;
-    }
-    .nav-links-group {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      flex-wrap: wrap;
-    }
-    .nav-link {
-      color: var(--nav-text);
-      font-weight: 500;
-      transition: color 0.3s;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.9rem;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .nav-link:hover { color: var(--gold); background: rgba(22,163,74,0.15); }
-    .dropdown-container {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-btn {
-      background: none;
-      border: none;
-      color: var(--nav-text);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.3s;
-      white-space: nowrap;
-    }
-    .dropdown-btn:hover { color: var(--gold); background: rgba(22,163,74,0.15); }
-    .dropdown-menu {
-      position: absolute;
-      left: 0;
-      margin-top: 0.5rem;
-      width: 200px;
-      background: var(--bg-card);
-      border-radius: 0.5rem;
-      box-shadow: var(--shadow);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      transform: translateY(10px);
-      z-index: 60;
-      border: 1px solid var(--border-color);
-    }
-    .dropdown-container:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .dropdown-menu a {
-      display: block;
-      padding: 0.75rem 1.2rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.85rem;
-    }
-    .dropdown-menu a:hover { background: rgba(22,163,74,0.1); color: var(--gold); }
-    .nav-buttons {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .icon-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: rgba(22,163,74,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: 0.2s;
-      color: var(--nav-text);
-      border: none;
-    }
-    .icon-btn:hover { background: var(--gold); color: #0D0D0D; }
-    .login-btn {
-      background: var(--gold);
-      color: #0D0D0D;
-      padding: 0.5rem 1.5rem;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: 0.3s;
-      white-space: nowrap;
-    }
-    .login-btn:hover { background: var(--gold-light); transform: scale(1.02); }
-    
-    /* Mobile Menu Button */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 10px;
-      z-index: 1001;
-      position: relative;
-    }
-    .hamburger-icon {
-      font-size: 1.8rem;
-      color: var(--nav-text);
-      transition: all 0.3s ease;
-    }
-    .close-icon {
-      font-size: 1.8rem;
-      color: var(--nav-text);
-      transition: all 0.3s ease;
-      display: none;
-    }
-    .mobile-menu-btn.active .hamburger-icon { display: none; }
-    .mobile-menu-btn.active .close-icon { display: block; }
-    
-    /* Mobile Menu Panel */
-    .mobile-menu-panel {
-      position: fixed;
-      top: 80px;
-      left: 0;
-      right: 0;
-      background: var(--bg-nav);
-      border-top: none;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out;
-      z-index: 999;
-      box-shadow: 0 20px 30px rgba(0,0,0,0.3);
-    }
-    .mobile-menu-panel.show {
-      max-height: calc(100vh - 80px);
-      overflow-y: auto;
-    }
-    .mobile-menu-inner { padding: 0.5rem 0; }
-    .mobile-nav-item { border-bottom: 1px solid rgba(22,163,74,0.1); }
-    .mobile-nav-link {
-      color: var(--nav-text);
-      text-decoration: none;
-      display: block;
-      padding: 1rem 1.5rem;
-      font-weight: 500;
-      transition: 0.2s;
-    }
-    .mobile-nav-link:hover { color: var(--gold); background: rgba(22,163,74,0.1); }
-    
-    .mobile-dropdown-item { border-bottom: 1px solid rgba(22,163,74,0.1); }
-    .mobile-dropdown-btn {
-      width: 100%;
-      background: none;
-      border: none;
-      color: var(--nav-text);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      font-size: 1rem;
-      text-align: left;
-      cursor: pointer;
-      font-weight: 500;
-      transition: 0.2s;
-    }
-    .mobile-dropdown-btn:hover { color: var(--gold); background: rgba(22,163,74,0.1); }
-    .mobile-dropdown-icon { transition: transform 0.3s ease; }
-    .mobile-dropdown-icon.rotated { transform: rotate(180deg); }
-    .mobile-submenu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    .mobile-submenu.show { max-height: 300px; }
-    .mobile-submenu a {
-      display: block;
-      padding: 0.75rem 1rem;
-      color: var(--nav-text);
-      text-decoration: none;
-      opacity: 0.8;
-      transition: 0.2s;
-      border-left: 2px solid transparent;
-    }
-    .mobile-submenu a:hover {
-      color: var(--gold);
-      opacity: 1;
-      border-left-color: var(--gold);
-      background: rgba(22,163,74,0.05);
-    }
-    .mobile-login-btn {
-      display: inline-block;
-      margin: 1rem 1.5rem;
-      background: var(--gold);
-      color: #0D0D0D;
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      text-align: center;
-    }
-    .mobile-theme-rtl {
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 1.5rem;
-      border-top: 1px solid rgba(22,163,74,0.15);
-      margin-top: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .mobile-icon-btn {
-      background: rgba(22,163,74,0.2);
-      border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 999px;
-      color: var(--nav-text);
-      cursor: pointer;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .mobile-icon-btn:hover { background: var(--gold); color: #0D0D0D; }
+    .nav-logo-text { font-size: 1.45rem; font-weight: 800; color: var(--nav-text); text-decoration: none; letter-spacing: -0.5px; line-height: 1.1; }
+    .nav-logo-text span { color: var(--brand-blue); }
+    .nav-logo-tag { display: block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--brand-emerald); }
+    .nav-menu-container { display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 1.5rem; }
+    .nav-links-group { display: flex; align-items: center; gap: 0.3rem; flex-wrap: wrap; }
+    .nav-link { color: var(--nav-text); font-weight: 600; transition: all 0.2s; padding: 0.5rem 0.9rem; border-radius: var(--radius-sm); font-size: 0.92rem; text-decoration: none; white-space: nowrap; }
+    .nav-link:hover { color: var(--brand-blue); background: rgba(29, 78, 216, 0.08); }
+    .nav-link.active { color: var(--brand-blue) !important; background: rgba(29, 78, 216, 0.1); font-weight: 700; }
 
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      background: #0f172a;
-      display: flex;
-      align-items: center;
+    .dropdown-container { position: relative; display: inline-block; }
+    .dropdown-btn {
+      background: none; border: none; color: var(--nav-text); font-weight: 600; display: flex; align-items: center; gap: 6px; padding: 0.5rem 0.9rem; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.92rem; font-family: inherit; transition: all 0.2s; white-space: nowrap;
+    }
+    .dropdown-btn:hover { color: var(--brand-blue); background: rgba(29, 78, 216, 0.08); }
+    .dropdown-menu {
+      position: absolute; left: 0; top: 100%; margin-top: 0.5rem; width: 220px; background: var(--bg-card); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); transform: translateY(8px); z-index: 60; border: 1px solid var(--border-color); padding: 0.5rem 0;
+    }
+    .dropdown-container:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu a { display: flex; align-items: center; gap: 10px; padding: 0.65rem 1.2rem; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: 0.2s; }
+    .dropdown-menu a:hover { background: rgba(29, 78, 216, 0.08); color: var(--brand-blue); padding-left: 1.4rem; }
+
+    .nav-buttons { display: flex; align-items: center; gap: 0.6rem; }
+    .icon-btn {
+      width: 38px; height: 38px; border-radius: var(--radius-full); background: rgba(148, 163, 184, 0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; color: var(--nav-text); border: 1px solid var(--border-color); font-size: 0.9rem;
+    }
+    .icon-btn:hover { background: var(--brand-blue); color: #FFFFFF; }
+    .login-btn {
+      background: var(--brand-blue); color: #FFFFFF !important; padding: 0.52rem 1.25rem; border-radius: var(--radius-md); font-weight: 600; text-decoration: none; font-size: 0.88rem; transition: 0.25s; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .register-btn {
+      background: rgba(29, 78, 216, 0.1); color: var(--brand-blue) !important; padding: 0.52rem 1.25rem; border-radius: var(--radius-md); font-weight: 600; text-decoration: none; font-size: 0.88rem; transition: 0.25s; white-space: nowrap;
+    }
+
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--nav-text); font-size: 1.5rem; }
+    .mobile-menu-panel {
+      position: fixed; top: 76px; left: 0; right: 0; background: var(--bg-nav); backdrop-filter: blur(12px); max-height: 0; overflow: hidden; transition: max-height 0.35s ease; z-index: 999; box-shadow: 0 20px 30px rgba(0,0,0,0.2); border-bottom: 1px solid var(--border-color);
+    }
+    .mobile-menu-panel.show { max-height: calc(100vh - 76px); overflow-y: auto; }
+    .mobile-menu-inner { padding: 1rem 0; }
+    .mobile-nav-item a, .mobile-dropdown-btn {
+      display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.5rem; color: var(--nav-text); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--border-color); width: 100%; background: none; border: none; font-family: inherit; font-size: 1rem; text-align: left;
+    }
+    .mobile-submenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .mobile-submenu.show { max-height: 250px; }
+    .mobile-submenu a { padding: 0.75rem 2rem; font-size: 0.9rem; color: var(--text-secondary); text-decoration: none; display: block; border-bottom: 1px solid var(--border-color); }
+
+    /* LOCATIONS HERO */
+    .locations-hero {
       position: relative;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      background: linear-gradient(135deg, #070D1E 0%, #0F172A 60%, #1E3A8A 100%);
+      color: #FFFFFF;
+      overflow: hidden;
     }
-    .hero::before {
-      content: '';
+    .locations-hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 100%);
-      z-index: 1;
-    }
-    .hero h1, .hero h2, .hero p {
-      color: #ffffff !important;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format') center/cover no-repeat;
-      opacity: 0.9;
+      background-image: 
+        radial-gradient(circle at 80% 20%, rgba(29, 78, 216, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(29, 78, 216, 0.25) 0%, transparent 45%);
       pointer-events: none;
     }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
-    section { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
-    .section-title {
-      font-size: 3rem;
-      font-family: 'Merriweather', serif;
-      text-align: center;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-    }
-    .gold-divider {
-      width: 70px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0.8rem auto 2rem;
-    }
-    .section-sub {
-      text-align: center;
-      color: var(--text-secondary);
-      max-width: 700px;
+    .locations-hero h1 { font-size: 3.4rem; font-weight: 800; color: #FFFFFF; margin-bottom: 1.2rem; }
+    .locations-hero p { color: #CBD5E1; font-size: 1.15rem; max-width: 680px; margin-bottom: 2rem; }
+
+    /* SEARCH & FILTER BAR */
+    .location-search-wrapper {
+      display: flex;
+      gap: 1rem;
+      max-width: 850px;
       margin: 0 auto 3rem;
+      flex-wrap: wrap;
     }
+    .location-search-input {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+    .location-search-input i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+    .location-search {
+      width: 100%;
+      padding: 0.85rem 1rem 0.85rem 44px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .location-search:focus {
+      border-color: var(--brand-blue);
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+    }
+    .location-filter-select {
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* LOCATION CARDS WITH IMAGERY */
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 2rem;
-      transition: all 0.3s;
-    }
-    .card:hover { border-color: var(--gold); transform: translateY(-6px); }
-    .card-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 1.5rem; }
-
-    /* ----- LOCATIONS SPECIFIC ----- */
     .location-card {
       background: var(--bg-card);
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border-color);
-      border-top: 3px solid var(--gold);
-      padding: 0;
-      transition: all 0.3s;
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
       display: flex;
       flex-direction: column;
     }
     .location-card:hover {
-      border-color: var(--gold);
       transform: translateY(-6px);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-blue);
     }
-    .location-card-header {
-      padding: 1.8rem 2rem 1.2rem;
-      border-bottom: 1px solid var(--border-color);
+    .location-img-wrap {
       position: relative;
+      height: 200px;
+      overflow: hidden;
     }
-    .location-card-header .location-badge {
+    .location-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .location-card:hover .location-img-wrap img {
+      transform: scale(1.06);
+    }
+    .location-badge-open {
       position: absolute;
-      top: 1.5rem;
-      right: 1.8rem;
-      background: rgba(22,163,74,0.15);
-      color: var(--gold);
-      font-size: 0.7rem;
+      top: 14px;
+      right: 14px;
+      background: rgba(29, 78, 216, 0.95);
+      color: #FFFFFF;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
       font-weight: 700;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 0.3rem 0.7rem;
+      backdrop-filter: blur(4px);
     }
-    .location-card-header h3 {
-      font-family: 'Merriweather', serif;
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      padding-right: 70px;
-    }
-    .location-card-header .location-city {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .location-card-header .location-city i {
-      color: var(--gold);
+    .location-lanes-tag {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #FFFFFF;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-md);
+      font-size: 0.75rem;
+      font-weight: 700;
+      backdrop-filter: blur(4px);
     }
     .location-card-body {
-      padding: 1.5rem 2rem;
-      flex: 1;
-    }
-    .location-info-item {
+      padding: 1.6rem;
+      flex-grow: 1;
       display: flex;
-      gap: 12px;
-      margin-bottom: 1rem;
-      align-items: flex-start;
-      font-size: 0.88rem;
+      flex-direction: column;
     }
-    .location-info-item i {
-      color: var(--gold);
+    .location-card-body h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+    .location-city-sub {
+      color: var(--brand-blue);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .location-detail-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .location-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+    }
+    .location-detail-item i {
+      color: var(--brand-blue);
       margin-top: 3px;
       min-width: 16px;
     }
-    .location-info-item span,
-    .location-info-item a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      line-height: 1.5;
-    }
-    .location-info-item a:hover {
-      color: var(--gold);
-    }
     .location-card-footer {
-      padding: 1.2rem 2rem 1.8rem;
       display: flex;
-      gap: 0.7rem;
-      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 1.2rem;
       border-top: 1px solid var(--border-color);
     }
-    .location-card-footer .btn-outline-gold,
-    .location-card-footer .btn-gold {
-      padding: 0.55rem 1.1rem;
-      font-size: 0.75rem;
-      flex: 1;
-      justify-content: center;
-      min-width: 0;
-    }
 
-    /* Search / filter bar */
-    .location-search-wrapper {
-      max-width: 700px;
-      margin: 0 auto 3rem;
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-    }
-    .location-search-input {
-      position: relative;
-      flex: 1;
-      min-width: 250px;
-    }
-    .location-search-input i {
-      position: absolute;
-      left: 1.2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-    .location-search {
-      width: 100%;
-      padding: 1rem 1.2rem 1rem 3rem;
-      background: var(--input-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      transition: all 0.3s;
-      outline: none;
-      border-radius: 0;
-    }
-    .location-search:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(22,163,74,0.15);
-    }
-    .location-search::placeholder {
-      color: var(--text-muted);
-    }
-    .location-filter-select {
-      padding: 1rem 1.2rem;
-      background: var(--input-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      outline: none;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-radius: 0;
-      min-width: 180px;
-    }
-    .location-filter-select:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(22,163,74,0.15);
-    }
-
-    /* No results */
     .no-locations {
-      display: none;
       text-align: center;
-      padding: 3rem 1rem;
-      color: var(--text-muted);
+      padding: 4rem 1rem;
+      display: none;
     }
     .no-locations.show { display: block; }
-    .no-locations i {
-      font-size: 3rem;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      opacity: 0.5;
-    }
-
-    /* Map placeholder */
-    .map-placeholder {
-      width: 100%;
-      height: 500px;
-      background: 
-        linear-gradient(135deg, rgba(22,163,74,0.1), rgba(22,163,74,0.03)),
-        repeating-linear-gradient(45deg, var(--bg-secondary) 0, var(--bg-secondary) 20px, var(--bg-card) 20px, var(--bg-card) 40px);
-      border: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 1rem;
-      color: var(--text-secondary);
-      position: relative;
-      overflow: hidden;
-    }
-    .map-placeholder i {
-      font-size: 3.5rem;
-      color: var(--gold);
-    }
-    .map-placeholder h3 {
-      font-family: 'Merriweather', serif;
-      font-size: 1.5rem;
-      color: var(--text-primary);
-    }
-    .map-placeholder p {
-      font-size: 0.9rem;
-      max-width: 450px;
-      text-align: center;
-    }
-
-    /* Stat bar */
-    .location-stats {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .location-stat {
-      flex: 1;
-      min-width: 180px;
-      padding: 2rem 1rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-bottom: 2px solid var(--gold);
-    }
-    .location-stat i {
-      font-size: 2rem;
-      color: var(--gold);
-      margin-bottom: 0.8rem;
-    }
-    .location-stat h4 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      margin-bottom: 0.3rem;
-    }
-    .location-stat p {
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    /* FAQ */
-    .faq-item { background: var(--bg-card); margin-bottom: 1rem; border-left: 2px solid var(--gold); }
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 1.2rem;
-      text-align: left;
-      font-weight: 600;
-      color: var(--text-primary);
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-      font-size: 0.95rem;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s;
-      padding: 0 1.2rem;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    .faq-answer.open { max-height: 300px; padding-bottom: 1rem; }
+    .no-locations i { font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem; }
 
     /* FOOTER */
     footer {
       background: var(--footer-bg);
       padding-top: 80px;
       padding-bottom: 40px;
-      border-top: 1px solid rgba(22,163,74,0.2);
+      border-top: 1px solid var(--border-color);
+      color: var(--footer-text);
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin-bottom: 3rem;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
     }
     .footer-col h4 {
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      margin-bottom: 1.3rem;
+      color: #FFFFFF;
       font-weight: 700;
-      color: var(--footer-text);
     }
     .footer-col a {
       display: block;
       color: var(--footer-text-muted);
       text-decoration: none;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
       transition: 0.2s;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
     }
-    .footer-col a:hover { color: var(--gold); }
-    .footer-col p {
-      color: var(--footer-text-muted);
-      line-height: 1.6;
-    }
-    .footer-col span {
-      color: var(--footer-text-muted);
-    }
-    .footer-logo {
-      font-size: 1.8rem !important;
-      font-weight: 700 !important;
-      color: var(--footer-text) !important;
-      text-decoration: none !important;
-      letter-spacing: -0.5px !important;
-      display: inline-block !important;
-      line-height: 1 !important;
-      margin-bottom: 1rem !important;
-    }
-    .footer-logo span {
-      color: var(--gold) !important;
-      font-style: italic !important;
-      font-family: 'Merriweather', serif !important;
-    }
+    .footer-col a:hover { color: #60A5FA; padding-left: 4px; }
+    .footer-col p { color: var(--footer-text-muted); line-height: 1.6; font-size: 0.88rem; }
     .social-icons a {
-      display: inline-block;
-      margin-right: 1rem;
-      font-size: 1.2rem;
-      color: var(--footer-text-muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      margin-right: 0.6rem;
       transition: 0.2s;
     }
-    .social-icons a:hover { color: var(--gold); }
+    .social-icons a:hover { background: var(--brand-blue); transform: translateY(-2px); }
     .footer-contact-item {
       display: flex;
       gap: 12px;
       margin-bottom: 12px;
       align-items: flex-start;
+      font-size: 0.88rem;
     }
-    .footer-contact-item i {
-      color: var(--gold);
-      margin-top: 2px;
-      min-width: 16px;
-    }
-    .footer-contact-item span, .footer-contact-item a {
-      color: var(--footer-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      line-height: 1.5;
-    }
-    .footer-contact-item a:hover {
-      color: var(--gold);
-    }
+    .footer-contact-item i { color: #60A5FA; margin-top: 4px; }
     .footer-copyright {
-      border-top: 1px solid rgba(22,163,74,0.15);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: 2rem;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
       color: var(--footer-text-muted);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
     }
-    .footer-copyright a {
-      color: var(--footer-text-muted);
-      text-decoration: none;
-      margin-right: 1rem;
-      transition: 0.2s;
-    }
-    .footer-copyright a:hover {
-      color: var(--gold);
-    }
-    
-    /* Responsive Breakpoints */
+
     @media (max-width: 1180px) {
       .nav-menu-container, .nav-buttons { display: none; }
       .mobile-menu-btn { display: block; }
-    }
-    @media (max-width: 1024px) {
-      .section-title { font-size: 2.5rem; }
-      .hero h1 { font-size: 3rem !important; }
-      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      .footer-grid { grid-template-columns: 1fr; }
+      .locations-hero h1 { font-size: 2.5rem; }
       .section-title { font-size: 2rem; }
-      .hero h1 { font-size: 2.2rem !important; }
-      .container { padding: 0 1rem; }
-      section { padding: 60px 0; }
-      .footer-logo { font-size: 1.8rem !important; }
-      .map-placeholder { height: 350px; padding: 1.5rem; }
-      .location-card-footer { flex-direction: column; }
-      .location-card-footer .btn-outline-gold,
-      .location-card-footer .btn-gold { width: 100%; }
-    }
-    @media (min-width: 1025px) and (max-width: 1180px) {
-      .nav-menu-container, .nav-buttons { display: none; }
-      .mobile-menu-btn { display: block; }
-    }
-    @media (max-width: 480px) {
-      .btn-gold, .btn-outline-gold { padding: 0.6rem 1.2rem; font-size: 0.75rem; }
-      .mobile-theme-rtl { flex-direction: column; }
-      .footer-copyright { flex-direction: column; text-align: center; }
-      .footer-logo { font-size: 1.8rem !important; }
-    }
-    
-    /* Active Nav Link */
-    .nav-link.active,
-    .dropdown-menu a.active,
-    .mobile-nav-link.active,
-    .mobile-submenu a.active {
-      color: var(--gold) !important;
-      background: rgba(22,163,74,0.15);
-    }
-    .nav-link.active {
-      border-bottom: 2px solid var(--gold);
+      .grid-3 { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR (with Contact link) -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-container">
     <div class="flex-nav">
       <div class="flex-shrink-0">
-        <a href="index.html" class="nav-logo-text"><span>Apex Inspect</span></a>
+        <a href="index.html" class="brand-logo"><span>Apex Inspect</span></a>
       </div>
+
       <div class="nav-menu-container">
         <div class="nav-links-group">
           <div class="dropdown-container">
-            <button class="dropdown-btn">Home <i class="fas fa-chevron-down"></i></button>
+            <button class="dropdown-btn">Home <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></button>
             <div class="dropdown-menu">
-              <a href="index.html">Home 1</a>
-              <a href="home2.html">Home 2</a>
+              <a href="index.html"><i class="fas fa-gauge-high"></i> Home 1 (Drive-Thru)</a>
+              <a href="home2.html"><i class="fas fa-certificate"></i> Home 2 (Enterprise)</a>
             </div>
           </div>
           <a href="services.html" class="nav-link">Services</a>
@@ -876,128 +579,92 @@
           <a href="faq.html" class="nav-link">FAQ</a>
           <a href="contact.html" class="nav-link">Contact</a>
           <div class="dropdown-container">
-            <button class="dropdown-btn">Portal <i class="fas fa-chevron-down"></i></button>
+            <button class="dropdown-btn">Portal <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></button>
             <div class="dropdown-menu">
-              <a href="admin.html">Admin Dashboard</a>
-              <a href="user.html">Vendor Dashboard</a>
+              <a href="admin.html"><i class="fas fa-shield-alt"></i> Admin Dashboard</a>
+              <a href="user.html"><i class="fas fa-truck-ramp-box"></i> Vendor Dashboard</a>
             </div>
           </div>
         </div>
       </div>
+
       <div class="nav-buttons">
-        <a href="login.html" class="login-btn"> Login</a>
-        <a href="register.html" class="login-btn"> Register</a>
-        <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
-        <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
+        <a href="login.html" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="register.html" class="register-btn">Register</a>
+        <button id="rtl-toggle" class="icon-btn" title="RTL Switch"><i class="fas fa-exchange-alt"></i></button>
+        <button id="theme-toggle" class="icon-btn" title="Toggle Theme"><i class="fas fa-moon"></i></button>
       </div>
-      
-      <!-- Hamburger Menu Button -->
-      <button id="mobile-menu-btn" class="mobile-menu-btn">
-        <i class="fas fa-bars hamburger-icon"></i>
-        <i class="fas fa-times close-icon"></i>
+
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
       </button>
     </div>
   </div>
-  
-  <!-- Mobile Menu Panel -->
+
   <div id="mobile-menu-panel" class="mobile-menu-panel">
     <div class="mobile-menu-inner">
       <div class="mobile-dropdown-item">
-        <button class="mobile-dropdown-btn" data-dropdown="home-dropdown">
-          Home <i class="fas fa-chevron-down mobile-dropdown-icon" id="home-dropdown-icon"></i>
-        </button>
-        <div class="mobile-submenu" id="home-submenu">
-          <a href="index.html">Home 1</a>
-          <a href="home2.html">Home 2</a>
+        <button class="mobile-dropdown-btn"><span>Home</span> <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button>
+        <div class="mobile-submenu">
+          <a href="index.html">Home 1 (Drive-Thru)</a>
+          <a href="home2.html">Home 2 (Enterprise)</a>
         </div>
       </div>
-      
-      <div class="mobile-nav-item"><a href="services.html" class="mobile-nav-link">Services</a></div>
-      <div class="mobile-nav-item"><a href="emissions.html" class="mobile-nav-link">Emissions</a></div>
-      <div class="mobile-nav-item"><a href="locations.html" class="mobile-nav-link active">Locations</a></div>
-      <div class="mobile-nav-item"><a href="faq.html" class="mobile-nav-link">FAQ</a></div>
-      <div class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></div>
-      
+      <div class="mobile-nav-item"><a href="services.html">Services</a></div>
+      <div class="mobile-nav-item"><a href="emissions.html">Emissions Testing</a></div>
+      <div class="mobile-nav-item"><a href="locations.html">Locations</a></div>
+      <div class="mobile-nav-item"><a href="faq.html">FAQ</a></div>
+      <div class="mobile-nav-item"><a href="contact.html">Contact Us</a></div>
       <div class="mobile-dropdown-item">
-        <button class="mobile-dropdown-btn" data-dropdown="portal-dropdown">
-          Portal <i class="fas fa-chevron-down mobile-dropdown-icon" id="portal-dropdown-icon"></i>
-        </button>
-        <div class="mobile-submenu" id="portal-submenu">
+        <button class="mobile-dropdown-btn"><span>Portal</span> <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button>
+        <div class="mobile-submenu">
           <a href="admin.html">Admin Dashboard</a>
           <a href="user.html">Vendor Dashboard</a>
         </div>
       </div>
-      
-      <div class="mobile-nav-item">
-        <a href="login.html" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
-        <a href="register.html" class="mobile-login-btn"><i class="fas fa-user-plus"></i> Register</a>
-      </div>
-      <div class="mobile-theme-rtl">
-        <button id="mobile-theme-toggle" class="mobile-icon-btn"><i class="fas fa-moon"></i> Theme</button>
-        <button id="mobile-rtl-toggle" class="mobile-icon-btn"><i class="fas fa-exchange-alt"></i> RTL</button>
+      <div class="mobile-btn-wrap">
+        <a href="login.html" class="btn-primary" style="flex:1; justify-content:center;">Login</a>
+        <a href="register.html" class="btn-outline" style="flex:1; justify-content:center;">Register</a>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- HERO / PAGE HEADER -->
-<section class="hero" style="padding-top: 80px; min-height: 45vh;">
-  <div class="hero-overlay"></div>
+<!-- LOCATIONS HERO -->
+<section class="locations-hero">
+  <div class="locations-hero-overlay"></div>
   <div class="container" style="position:relative; z-index:2;">
-    <div class="animate-fade-in" style="max-width:700px;">
-      <h1 class="font-serif" style="font-size: 3.5rem; margin-bottom:1.5rem; color: var(--text-primary);">Find a <span class="gold-text">Location</span></h1>
-      <p style="color: var(--text-secondary); font-size:1.1rem; margin-bottom:2rem;">Multiple convenient stations across the region. Each one state-certified, fully equipped, and ready to serve you fast.</p>
-      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-        <a href="#locations-grid" class="btn-gold">Browse Stations <i class="fas fa-arrow-down"></i></a>
-        <a href="contact.html" class="btn-outline-gold">Contact Us</a>
+    <div class="animate-fade-in">
+      <span class="badge badge-blue" style="margin-bottom:1rem;"><i class="fas fa-map-location-dot"></i> Multi-Bay Drive-Thru Stations</span>
+      <h1>Find An Inspection Station <span style="color:#60A5FA;">Near You</span></h1>
+      <p>
+        Every Apex Inspect station is state-certified, equipped with calibrated emissions spectrometers and safety lift diagnostic bays. Filter by city or search your nearest location.
+      </p>
+      <div style="display:flex; gap:1.2rem; flex-wrap:wrap;">
+        <a href="#locations-grid" class="btn-primary"><i class="fas fa-arrow-down"></i> Browse Stations</a>
+        <a href="contact.html" class="btn-outline" style="border-color:rgba(255,255,255,0.3); color:#FFFFFF !important;"><i class="fas fa-phone"></i> Emergency Dispatch</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section style="background: var(--bg-secondary); padding: 70px 0; border-bottom: none;">
+<!-- LOCATIONS GRID & SEARCH -->
+<section id="locations-grid" style="background:var(--bg-secondary);">
   <div class="container">
-    <div class="location-stats">
-      <div class="location-stat">
-        <i class="fas fa-map-marker-alt"></i>
-        <h4>8+</h4>
-        <p>Stations</p>
-      </div>
-      <div class="location-stat">
-        <i class="fas fa-clock"></i>
-        <h4>15 Min</h4>
-        <p>Avg. Wait Time</p>
-      </div>
-      <div class="location-stat">
-        <i class="fas fa-certificate"></i>
-        <h4>100%</h4>
-        <p>State Certified</p>
-      </div>
-      <div class="location-stat">
-        <i class="fas fa-star"></i>
-        <h4>4.9/5</h4>
-        <p>Customer Rating</p>
-      </div>
+    <div style="text-align:center;">
+      <h2 class="section-title">Drive-Thru Testing Centers</h2>
+      <div class="brand-divider"></div>
+      <p class="section-sub">Real-time station status, operating hours, lane capabilities, and direct GPS coordinates.</p>
     </div>
-  </div>
-</section>
 
-<!-- LOCATIONS GRID -->
-<section id="locations-grid" style="background: var(--bg-secondary); padding-top: 40px;">
-  <div class="container">
-    <h2 class="section-title">Our <span class="gold-text">Stations</span></h2>
-    <div class="gold-divider"></div>
-    <p class="section-sub">Browse all our convenient locations. Filter by city or search by name to find your nearest station.</p>
-
-    <!-- Search & Filter -->
+    <!-- Search & Filter Controls -->
     <div class="location-search-wrapper">
       <div class="location-search-input">
         <i class="fas fa-search"></i>
-        <input type="text" id="locationSearch" class="location-search" placeholder="Search by station name, city, or area…">
+        <input type="text" id="locationSearch" class="location-search" placeholder="Search by station name, city, or highway…">
       </div>
       <select id="cityFilter" class="location-filter-select">
-        <option value="">All Cities</option>
+        <option value="">All Regions & Cities</option>
         <option value="mumbai">Mumbai</option>
         <option value="pune">Pune</option>
         <option value="thane">Thane</option>
@@ -1006,342 +673,224 @@
       </select>
     </div>
 
-    <!-- No results -->
+    <!-- No results container -->
     <div class="no-locations" id="noLocations">
-      <i class="fas fa-map-marked-alt"></i>
-      <h3 style="font-family: 'Merriweather', serif; margin-bottom: 0.5rem;">No stations found</h3>
-      <p>Try a different search term or <a href="contact.html" class="gold-text" style="text-decoration: underline;">contact us directly</a>.</p>
+      <i class="fas fa-map-location-dot"></i>
+      <h3>No stations found matching your search</h3>
+      <p>Try searching for a different area or <a href="contact.html" style="color:var(--brand-blue); font-weight:700;">contact our station dispatch</a>.</p>
     </div>
 
-    <!-- Location cards -->
-    <div class="grid-3" id="locationsContainer" style="margin-top: 1rem;">
-
+    <!-- Cards Container -->
+    <div class="grid-3" id="locationsContainer">
       <!-- 1. Downtown Mumbai -->
       <div class="location-card" data-city="mumbai" data-name="Downtown Mumbai Central Station">
-        <div class="location-card-header">
-          <span class="location-badge">Open Now</span>
-          <h3>Downtown Mumbai</h3>
-          <div class="location-city">
-            <i class="fas fa-map-marker-alt"></i> Central Station
-          </div>
+        <div class="location-img-wrap">
+          <img src="images/station-mumbai.jpg" alt="Downtown Central Inspection Station">
+          <span class="location-badge-open">Open Now</span>
+          <span class="location-lanes-tag"><i class="fas fa-car"></i> 4 Drive-Thru Lanes</span>
         </div>
         <div class="location-card-body">
-          <div class="location-info-item">
-            <i class="fas fa-location-arrow"></i>
-            <span>123 Main Street, Fort, Mumbai 400001</span>
+          <h3>Downtown Central Hub</h3>
+          <div class="location-city-sub"><i class="fas fa-map-marker-alt"></i> Fort, South Mumbai</div>
+          <ul class="location-detail-list">
+            <li class="location-detail-item">
+              <i class="fas fa-location-arrow"></i>
+              <span>123 Main Street, Fort, Mumbai 400001</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon–Fri: 7:00 AM – 7:00 PM | Sat: 8:00 AM – 5:00 PM</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-stopwatch" style="color:var(--brand-emerald);"></i>
+              <span style="font-weight:700; color:var(--brand-emerald);">Live Turnaround: ~8 Min Wait</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-shield-halved"></i>
+              <span>Safety · OBD-II Emissions · VIN Verification · Motorcycle</span>
+            </li>
+          </ul>
+          <div class="location-card-footer">
+            <a href="contact.html" class="btn-primary" style="flex:1; justify-content:center;">Book Fast Track</a>
+            <a href="https://maps.google.com/?q=Fort+Mumbai" target="_blank" rel="noopener" class="btn-outline">Map</a>
           </div>
-          <div class="location-info-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+912212345678">+91 22 1234 5678</a>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clock"></i>
-            <span>Mon–Fri: 7:00 AM – 6:00 PM<br>Sat: 8:00 AM – 5:00 PM</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clipboard-check"></i>
-            <span>Safety · Emissions · VIN · Motorcycle</span>
-          </div>
-        </div>
-        <div class="location-card-footer">
-          <a href="contact.html" class="btn-gold">Book Now</a>
-          <a href="https://maps.google.com/?q=Fort+Mumbai" target="_blank" rel="noopener" class="btn-outline-gold">Directions</a>
         </div>
       </div>
 
       <!-- 2. Westside Express -->
       <div class="location-card" data-city="mumbai" data-name="Westside Express Andheri Station">
-        <div class="location-card-header">
-          <span class="location-badge">Open Now</span>
-          <h3>Westside Express</h3>
-          <div class="location-city">
-            <i class="fas fa-map-marker-alt"></i> Andheri West
-          </div>
+        <div class="location-img-wrap">
+          <img src="images/station-westside.jpg" alt="Westside Express Testing Station">
+          <span class="location-badge-open">Open Now</span>
+          <span class="location-lanes-tag"><i class="fas fa-bolt"></i> 3 Express Lanes</span>
         </div>
         <div class="location-card-body">
-          <div class="location-info-item">
-            <i class="fas fa-location-arrow"></i>
-            <span>4567 Link Road, Andheri West, Mumbai 400053</span>
+          <h3>Westside Express Center</h3>
+          <div class="location-city-sub"><i class="fas fa-map-marker-alt"></i> Andheri West</div>
+          <ul class="location-detail-list">
+            <li class="location-detail-item">
+              <i class="fas fa-location-arrow"></i>
+              <span>4567 Link Road, Andheri West, Mumbai 400053</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon–Sat: 8:00 AM – 7:00 PM | Sun: Closed</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-stopwatch" style="color:var(--brand-emerald);"></i>
+              <span style="font-weight:700; color:var(--brand-emerald);">Live Turnaround: ~5 Min Wait</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-shield-halved"></i>
+              <span>Safety · Emissions · VIN · Fleet Testing Bay</span>
+            </li>
+          </ul>
+          <div class="location-card-footer">
+            <a href="contact.html" class="btn-primary" style="flex:1; justify-content:center;">Book Fast Track</a>
+            <a href="https://maps.google.com/?q=Andheri+West+Mumbai" target="_blank" rel="noopener" class="btn-outline">Map</a>
           </div>
-          <div class="location-info-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+912298765432">+91 22 9876 5432</a>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clock"></i>
-            <span>Mon–Sat: 8:00 AM – 7:00 PM<br>Sun: Closed</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clipboard-check"></i>
-            <span>Safety · Emissions · VIN · Fleet</span>
-          </div>
-        </div>
-        <div class="location-card-footer">
-          <a href="contact.html" class="btn-gold">Book Now</a>
-          <a href="https://maps.google.com/?q=Andheri+West+Mumbai" target="_blank" rel="noopener" class="btn-outline-gold">Directions</a>
         </div>
       </div>
 
-      <!-- 3. Northgate Station -->
+      <!-- 3. Northgate Thane -->
       <div class="location-card" data-city="thane" data-name="Northgate Thane Station">
-        <div class="location-card-header">
-          <span class="location-badge">Open Now</span>
-          <h3>Northgate Station</h3>
-          <div class="location-city">
-            <i class="fas fa-map-marker-alt"></i> Thane West
-          </div>
+        <div class="location-img-wrap">
+          <img src="images/station-northgate.jpg" alt="Northgate Heavy Duty Inspection Center">
+          <span class="location-badge-open">Open Now</span>
+          <span class="location-lanes-tag"><i class="fas fa-truck"></i> Heavy Duty Station</span>
         </div>
         <div class="location-card-body">
-          <div class="location-info-item">
-            <i class="fas fa-location-arrow"></i>
-            <span>789 Ghodbunder Road, Thane West 400607</span>
+          <h3>Northgate Heavy Duty Hub</h3>
+          <div class="location-city-sub"><i class="fas fa-map-marker-alt"></i> Thane West</div>
+          <ul class="location-detail-list">
+            <li class="location-detail-item">
+              <i class="fas fa-location-arrow"></i>
+              <span>789 Ghodbunder Road, Thane West 400607</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon–Fri: 6:30 AM – 7:30 PM | Sat: 8:00 AM – 6:00 PM</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-stopwatch" style="color:var(--brand-emerald);"></i>
+              <span style="font-weight:700; color:var(--brand-emerald);">Live Turnaround: ~10 Min Wait</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-shield-halved"></i>
+              <span>Safety · Diesel Opacity · RV & Trailer · Commercial Dyno</span>
+            </li>
+          </ul>
+          <div class="location-card-footer">
+            <a href="contact.html" class="btn-primary" style="flex:1; justify-content:center;">Book Fast Track</a>
+            <a href="https://maps.google.com/?q=Thane+West" target="_blank" rel="noopener" class="btn-outline">Map</a>
           </div>
-          <div class="location-info-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+912245678901">+91 22 4567 8901</a>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clock"></i>
-            <span>Mon–Fri: 7:00 AM – 7:00 PM<br>Sat: 8:00 AM – 6:00 PM</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clipboard-check"></i>
-            <span>Safety · Emissions · Diesel · RV & Trailer</span>
-          </div>
-        </div>
-        <div class="location-card-footer">
-          <a href="contact.html" class="btn-gold">Book Now</a>
-          <a href="https://maps.google.com/?q=Thane+West" target="_blank" rel="noopener" class="btn-outline-gold">Directions</a>
         </div>
       </div>
 
       <!-- 4. Navi Mumbai Hub -->
       <div class="location-card" data-city="navi-mumbai" data-name="Navi Mumbai Vashi Hub">
-        <div class="location-card-header">
-          <span class="location-badge">Open Now</span>
-          <h3>Navi Mumbai Hub</h3>
-          <div class="location-city">
-            <i class="fas fa-map-marker-alt"></i> Vashi
-          </div>
+        <div class="location-img-wrap">
+          <img src="images/station-vashi.jpg" alt="Navi Mumbai Testing Bay">
+          <span class="location-badge-open">Open Now</span>
+          <span class="location-lanes-tag"><i class="fas fa-car"></i> 3 Drive-Thru Lanes</span>
         </div>
         <div class="location-card-body">
-          <div class="location-info-item">
-            <i class="fas fa-location-arrow"></i>
-            <span>Plot 12, Sector 17, Vashi, Navi Mumbai 400703</span>
+          <h3>Navi Mumbai Testing Bay</h3>
+          <div class="location-city-sub"><i class="fas fa-map-marker-alt"></i> Sector 17, Vashi</div>
+          <ul class="location-detail-list">
+            <li class="location-detail-item">
+              <i class="fas fa-location-arrow"></i>
+              <span>Plot 12, Sector 17, Vashi, Navi Mumbai 400703</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon–Fri: 7:30 AM – 6:30 PM | Sat: 8:00 AM – 4:00 PM</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-stopwatch" style="color:var(--brand-emerald);"></i>
+              <span style="font-weight:700; color:var(--brand-emerald);">Live Turnaround: ~7 Min Wait</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-shield-halved"></i>
+              <span>Safety · OBD-II Emissions · Fleet Testing</span>
+            </li>
+          </ul>
+          <div class="location-card-footer">
+            <a href="contact.html" class="btn-primary" style="flex:1; justify-content:center;">Book Fast Track</a>
+            <a href="https://maps.google.com/?q=Vashi+Navi+Mumbai" target="_blank" rel="noopener" class="btn-outline">Map</a>
           </div>
-          <div class="location-info-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+912267890123">+91 22 6789 0123</a>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clock"></i>
-            <span>Mon–Fri: 7:30 AM – 6:30 PM<br>Sat: 8:00 AM – 4:00 PM</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clipboard-check"></i>
-            <span>Safety · Emissions · VIN · Fleet</span>
-          </div>
-        </div>
-        <div class="location-card-footer">
-          <a href="contact.html" class="btn-gold">Book Now</a>
-          <a href="https://maps.google.com/?q=Vashi+Navi+Mumbai" target="_blank" rel="noopener" class="btn-outline-gold">Directions</a>
         </div>
       </div>
 
-      <!-- 5. Pune Camp -->
-      <div class="location-card" data-city="pune" data-name="Pune Camp Station">
-        <div class="location-card-header">
-          <span class="location-badge">Open Now</span>
-          <h3>Pune Camp</h3>
-          <div class="location-city">
-            <i class="fas fa-map-marker-alt"></i> Camp Area
-          </div>
+      <!-- 5. Pune Hub -->
+      <div class="location-card" data-city="pune" data-name="Pune Shivaji Nagar Station">
+        <div class="location-img-wrap">
+          <img src="images/station-lane.jpg" alt="Pune Central Inspection Center">
+          <span class="location-badge-open">Open Now</span>
+          <span class="location-lanes-tag"><i class="fas fa-car"></i> 4 Drive-Thru Lanes</span>
         </div>
         <div class="location-card-body">
-          <div class="location-info-item">
-            <i class="fas fa-location-arrow"></i>
-            <span>45 MG Road, Camp, Pune 411001</span>
+          <h3>Pune Central Station</h3>
+          <div class="location-city-sub"><i class="fas fa-map-marker-alt"></i> Shivaji Nagar, Pune</div>
+          <ul class="location-detail-list">
+            <li class="location-detail-item">
+              <i class="fas fa-location-arrow"></i>
+              <span>102 FC Road, Shivaji Nagar, Pune 411005</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon–Sat: 7:30 AM – 7:00 PM | Sun: Closed</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-stopwatch" style="color:var(--brand-emerald);"></i>
+              <span style="font-weight:700; color:var(--brand-emerald);">Live Turnaround: ~6 Min Wait</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-shield-halved"></i>
+              <span>Safety · Emissions · VIN · Motorcycle</span>
+            </li>
+          </ul>
+          <div class="location-card-footer">
+            <a href="contact.html" class="btn-primary" style="flex:1; justify-content:center;">Book Fast Track</a>
+            <a href="https://maps.google.com/?q=Shivaji+Nagar+Pune" target="_blank" rel="noopener" class="btn-outline">Map</a>
           </div>
-          <div class="location-info-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+912026543210">+91 20 2654 3210</a>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clock"></i>
-            <span>Mon–Fri: 7:00 AM – 6:00 PM<br>Sat: 8:00 AM – 5:00 PM</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clipboard-check"></i>
-            <span>Safety · Emissions · Motorcycle · VIN</span>
-          </div>
-        </div>
-        <div class="location-card-footer">
-          <a href="contact.html" class="btn-gold">Book Now</a>
-          <a href="https://maps.google.com/?q=Camp+Pune" target="_blank" rel="noopener" class="btn-outline-gold">Directions</a>
         </div>
       </div>
 
-      <!-- 6. Pune Hinjewadi -->
-      <div class="location-card" data-city="pune" data-name="Pune Hinjewadi Tech Park Station">
-        <div class="location-card-header">
-          <span class="location-badge">Open Now</span>
-          <h3>Pune Hinjewadi</h3>
-          <div class="location-city">
-            <i class="fas fa-map-marker-alt"></i> Hinjewadi Phase 1
-          </div>
+      <!-- 6. Nashik Expressway -->
+      <div class="location-card" data-city="nashik" data-name="Nashik Expressway Testing Gateway">
+        <div class="location-img-wrap">
+          <img src="images/contact-lane.jpg" alt="Nashik Expressway Testing Station">
+          <span class="location-badge-open">Open Now</span>
+          <span class="location-lanes-tag"><i class="fas fa-truck"></i> Commercial Gateway</span>
         </div>
         <div class="location-card-body">
-          <div class="location-info-item">
-            <i class="fas fa-location-arrow"></i>
-            <span>88 Tech Park Road, Hinjewadi, Pune 411057</span>
+          <h3>Nashik Expressway Gateway</h3>
+          <div class="location-city-sub"><i class="fas fa-map-marker-alt"></i> Mumbai-Agra Highway</div>
+          <ul class="location-detail-list">
+            <li class="location-detail-item">
+              <i class="fas fa-location-arrow"></i>
+              <span>Survey 88, Mumbai-Agra Highway, Nashik 422009</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-clock"></i>
+              <span>Mon–Sun: 7:00 AM – 8:00 PM (7 Days)</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-stopwatch" style="color:var(--brand-emerald);"></i>
+              <span style="font-weight:700; color:var(--brand-emerald);">Live Turnaround: ~9 Min Wait</span>
+            </li>
+            <li class="location-detail-item">
+              <i class="fas fa-shield-halved"></i>
+              <span>Commercial Diesel · Heavy Dyno · Fleet Testing</span>
+            </li>
+          </ul>
+          <div class="location-card-footer">
+            <a href="contact.html" class="btn-primary" style="flex:1; justify-content:center;">Book Fast Track</a>
+            <a href="https://maps.google.com/?q=Nashik+Highway" target="_blank" rel="noopener" class="btn-outline">Map</a>
           </div>
-          <div class="location-info-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+912065432109">+91 20 6543 2109</a>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clock"></i>
-            <span>Mon–Fri: 8:00 AM – 8:00 PM<br>Sat: 9:00 AM – 5:00 PM</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clipboard-check"></i>
-            <span>Safety · Emissions · Fleet · Imported</span>
-          </div>
-        </div>
-        <div class="location-card-footer">
-          <a href="contact.html" class="btn-gold">Book Now</a>
-          <a href="https://maps.google.com/?q=Hinjewadi+Pune" target="_blank" rel="noopener" class="btn-outline-gold">Directions</a>
         </div>
       </div>
-
-      <!-- 7. Nashik Central -->
-      <div class="location-card" data-city="nashik" data-name="Nashik Central Station">
-        <div class="location-card-header">
-          <span class="location-badge">Open Now</span>
-          <h3>Nashik Central</h3>
-          <div class="location-city">
-            <i class="fas fa-map-marker-alt"></i> College Road
-          </div>
-        </div>
-        <div class="location-card-body">
-          <div class="location-info-item">
-            <i class="fas fa-location-arrow"></i>
-            <span>22 College Road, Nashik 422005</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+912532345678">+91 253 234 5678</a>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clock"></i>
-            <span>Mon–Fri: 7:30 AM – 6:00 PM<br>Sat: 8:00 AM – 5:00 PM</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clipboard-check"></i>
-            <span>Safety · Emissions · VIN · Antique</span>
-          </div>
-        </div>
-        <div class="location-card-footer">
-          <a href="contact.html" class="btn-gold">Book Now</a>
-          <a href="https://maps.google.com/?q=College+Road+Nashik" target="_blank" rel="noopener" class="btn-outline-gold">Directions</a>
-        </div>
-      </div>
-
-      <!-- 8. Thane Ghodbunder -->
-      <div class="location-card" data-city="thane" data-name="Thane Ghodbunder Road Station">
-        <div class="location-card-header">
-          <span class="location-badge">Open Now</span>
-          <h3>Thane Ghodbunder</h3>
-          <div class="location-city">
-            <i class="fas fa-map-marker-alt"></i> Ghodbunder Road
-          </div>
-        </div>
-        <div class="location-card-body">
-          <div class="location-info-item">
-            <i class="fas fa-location-arrow"></i>
-            <span>Kasarvadavali, Ghodbunder Road, Thane 400615</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-phone"></i>
-            <a href="tel:+912228901234">+91 22 2890 1234</a>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clock"></i>
-            <span>Mon–Fri: 7:00 AM – 7:00 PM<br>Sat–Sun: 8:00 AM – 5:00 PM</span>
-          </div>
-          <div class="location-info-item">
-            <i class="fas fa-clipboard-check"></i>
-            <span>Safety · Emissions · Diesel · RV & Trailer</span>
-          </div>
-        </div>
-        <div class="location-card-footer">
-          <a href="contact.html" class="btn-gold">Book Now</a>
-          <a href="https://maps.google.com/?q=Ghodbunder+Road+Thane" target="_blank" rel="noopener" class="btn-outline-gold">Directions</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- MAP SECTION -->
-<section id="map" style="background: var(--bg-primary);">
-  <div class="container">
-    <h2 class="section-title">Head <span class="gold-text">Office Map</span></h2>
-    <div class="gold-divider"></div>
-    <p class="section-sub">Visit our main station in Mumbai — conveniently located and easy to reach.</p>
-
-    <div class="map-placeholder">
-      <i class="fas fa-map-marked-alt"></i>
-      <h3>Apex Inspect — Main Station</h3>
-      <p>Suite 45, Creators Block, Mumbai, Maharashtra 400001, India</p>
-      <a href="https://maps.google.com/?q=Creators+Block+Mumbai" target="_blank" rel="noopener" class="btn-outline-gold" style="margin-top: 0.5rem;">
-        Open in Google Maps <i class="fas fa-external-link-alt"></i>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- QUICK FAQ -->
-<section id="quick-faq" style="background: var(--bg-secondary);">
-  <div class="container">
-    <h2 class="section-title">Location <span class="gold-text">Questions</span></h2>
-    <div class="gold-divider"></div>
-    <p class="section-sub">A few of the most common questions about visiting our stations.</p>
-
-    <div style="max-width: 800px; margin: 0 auto;">
-      <div class="faq-item">
-        <button class="faq-question">Do I need an appointment at any location? <i class="fas fa-chevron-down gold-text"></i></button>
-        <div class="faq-answer">Walk-ins are welcome at all stations and typically take under 15 minutes. However, you can book an appointment online to guarantee a specific time slot, especially during peak hours.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Are all services available at every location? <i class="fas fa-chevron-down gold-text"></i></button>
-        <div class="faq-answer">Most locations offer the full range of services. Some specialty inspections (RV, imported vehicles, antique vehicles) may only be available at select larger stations. Check the services listed on each location card.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What are your weekend hours? <i class="fas fa-chevron-down gold-text"></i></button>
-        <div class="faq-answer">Weekend hours vary by location. Most stations are open on Saturdays from 8:00 AM to 5:00 PM. A few locations have Sunday hours. Check each location card for specific hours.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Do you have parking at each location? <i class="fas fa-chevron-down gold-text"></i></button>
-        <div class="faq-answer">Yes — all our stations have dedicated parking and clear signage for the inspection lanes. Larger stations have extended parking for RVs and commercial vehicles.</div>
-      </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 2.5rem;">
-      <a href="faq.html" class="btn-outline-gold">View Full FAQ <i class="fas fa-arrow-right"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA SECTION -->
-<section style="background: var(--gold); border-bottom:none; padding: 80px 0;">
-  <div class="container" style="text-align:center;">
-    <h2 class="section-title" style="color:#FFFFFF;">Ready to visit <span style="color:#0D0D0D;">a station?</span></h2>
-    <p style="color: rgba(255,255,255,0.9); margin-bottom:2rem; font-size:1.1rem;">Book your appointment online in under 2 minutes or just walk in. Fast service, certified results.</p>
-    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-      <a href="book.html" class="btn-gold" style="background:#FFFFFF; color:#0D0D0D; border-color:#FFFFFF;">Book Appointment</a>
-      <a href="contact.html" class="btn-outline-gold" style="border-color:#FFFFFF; color:#FFFFFF;">Contact Us</a>
     </div>
   </div>
 </section>
@@ -1351,67 +900,77 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <a href="#" class="footer-logo"><span>Apex Inspect</span></a>
-        <p style="margin-top: 0.5rem;">Official state vehicle inspections & emissions testing. Fast, certified, and reliable service you can trust.</p>
+        <a href="index.html" class="brand-logo" style="margin-bottom: 1.2rem; display: inline-block; color: #FFFFFF !important;"><span>Apex Inspect</span></a>
+        <p>Official State Department of Transportation & EPA Certified Vehicle Inspection & Emissions Center. Fast drive-thru testing with zero mechanic upselling.</p>
         <div class="social-icons" style="margin-top: 1.5rem;">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
+
       <div class="footer-col">
-        <h4>Explore</h4>
-        <a href="services.html">Services</a>
-        <a href="emissions.html">Emissions</a>
-        <a href="locations.html">Locations</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
+        <h4>Inspection Services</h4>
+        <a href="services.html">12-Point Safety Inspection</a>
+        <a href="emissions.html">OBD-II Emissions Testing</a>
+        <a href="services.html">Tailpipe Smog Analysis</a>
+        <a href="services.html">Official VIN Verification</a>
+        <a href="services.html">Heavy Diesel Opacity</a>
+        <a href="services.html">Commercial Fleet Program</a>
       </div>
+
       <div class="footer-col">
-        <h4>Support</h4>
-        <a href="faq.html">Inspection FAQ</a>
-        <a href="contact.html">Book Appointment</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
+        <h4>Quick Resources</h4>
+        <a href="faq.html">State Requirements FAQ</a>
+        <a href="locations.html">Drive-Thru Lane Wait Times</a>
+        <a href="emissions.html">Free 30-Day Retest Policy</a>
+        <a href="contact.html">Schedule Fleet Inspection</a>
+        <a href="admin.html">DMV Station Compliance Portal</a>
+        <a href="user.html">Vendor Partner Dashboard</a>
       </div>
+
       <div class="footer-col">
-        <h4>Visit Station</h4>
+        <h4>Station Headquarters</h4>
         <div class="footer-contact-item">
-          <i class="fas fa-map-marker-alt"></i>
+          <i class="fas fa-location-dot"></i>
           <span>Suite 45, Creators Block, Mumbai, India</span>
         </div>
         <div class="footer-contact-item">
           <i class="fas fa-phone"></i>
-          <a href="tel:+919876543210">+91 98765 43210</a>
+          <a href="tel:+919876543210" style="margin-bottom:0;">+91 98765 43210</a>
         </div>
         <div class="footer-contact-item">
           <i class="fas fa-envelope"></i>
-          <a href="mailto:hello@apexinspect.com">hello@apexinspect.com</a>
+          <a href="mailto:inspections@apexinspect.com" style="margin-bottom:0;">inspections@apexinspect.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Mon-Fri: 7am-7pm | Sat: 8am-5pm</span>
         </div>
       </div>
     </div>
+
     <div class="footer-copyright">
-      <p>© 2026 Apex Inspect. All rights reserved.</p>
+      <p>© 2026 Apex Inspect Testing Stations. Official State Licensed Facility. All rights reserved.</p>
       <div>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+        <a href="#" style="color:var(--footer-text-muted); text-decoration:none; margin-right:1rem;">Privacy Policy</a>
+        <a href="#" style="color:var(--footer-text-muted); text-decoration:none; margin-right:1rem;">Terms of Service</a>
+        <a href="#" style="color:var(--footer-text-muted); text-decoration:none;">DMV Compliance Standards</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
-  // ================== BASE SITE SCRIPTS ==================
-  // Dark Mode Toggle
+  // Theme Toggle
   const themeToggle = document.getElementById('theme-toggle');
   const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
   const body = document.body;
   
   function updateThemeIcon(isDark) {
     if (themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    if (mobileThemeToggle) mobileThemeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> Theme' : '<i class="fas fa-moon"></i> Theme';
+    if (mobileThemeToggle) mobileThemeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> Light' : '<i class="fas fa-moon"></i> Dark';
   }
   
   function toggleTheme() {
@@ -1461,87 +1020,27 @@
   
   const savedDirection = localStorage.getItem('direction');
   if (savedDirection === 'rtl') htmlElement.setAttribute('dir', 'rtl');
-  
-  // Mobile Menu Toggle
+
+  // Mobile Menu
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobilePanel = document.getElementById('mobile-menu-panel');
-  
-  function toggleMobileMenu() {
-    mobilePanel.classList.toggle('show');
-    mobileMenuBtn.classList.toggle('active');
-    document.body.style.overflow = mobilePanel.classList.contains('show') ? 'hidden' : '';
-  }
-  
   if (mobileMenuBtn && mobilePanel) {
-    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-    
-    document.querySelectorAll('.mobile-nav-link, .mobile-login-btn').forEach(link => {
-      link.addEventListener('click', () => {
-        if (mobilePanel.classList.contains('show')) toggleMobileMenu();
-      });
-    });
-  }
-  
-  // Mobile Dropdown Toggle
-  document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const submenu = this.nextElementSibling;
-      const icon = this.querySelector('.mobile-dropdown-icon');
-
-      document.querySelectorAll('.mobile-submenu').forEach(menu => {
-        if (menu !== submenu) menu.classList.remove('show');
-      });
-
-      document.querySelectorAll('.mobile-dropdown-icon').forEach(i => {
-        if (i !== icon) i.classList.remove('rotated');
-      });
-
-      submenu.classList.toggle('show');
-      icon.classList.toggle('rotated');
-    });
-  });
-  
-  // FAQ Accordion
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const ans = btn.nextElementSibling;
-      ans.classList.toggle('open');
-      const icon = btn.querySelector('.fa-chevron-down');
-      if (icon) icon.style.transform = ans.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-    });
-  });
-  
-  // Smooth Scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === "#" || targetId === "") return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if (mobilePanel && mobilePanel.classList.contains('show')) toggleMobileMenu();
+    mobileMenuBtn.addEventListener('click', () => {
+      mobilePanel.classList.toggle('show');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (mobilePanel.classList.contains('show')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
       }
     });
-  });
-  
-  // Close mobile menu on resize
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 1180 && mobilePanel && mobilePanel.classList.contains('show')) {
-      toggleMobileMenu();
-    }
-  });
-  
-  // Active Nav Highlight
-  const currentPage = window.location.pathname.split("/").pop();
-  document.querySelectorAll('a').forEach(link => {
-    const linkPage = link.getAttribute('href');
-    if (linkPage === currentPage) {
-      link.classList.add('active');
-    }
-  });
+  }
 
-  // ================== LOCATIONS SEARCH & FILTER ==================
+  // Location Search and City Filter
   const locationSearch = document.getElementById('locationSearch');
   const cityFilter = document.getElementById('cityFilter');
   const locationsContainer = document.getElementById('locationsContainer');

@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Apex Inspect | Vehicle Inspection & Emissions Testing Services</title>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <meta name="description" content="State-certified vehicle safety inspections and emissions testing. Fast, reliable, no hidden fees.">
+  <meta name="description" content="State-certified vehicle safety inspections, OBD-II and tailpipe emissions testing, VIN verification, and fleet testing services. Fast, certified, no hidden fees.">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     /* Reset & Base */
@@ -21,122 +23,245 @@
       box-sizing: border-box;
     }
 
-    /* Light mode (default) */
+    /* Light mode (default) - Automotive Precision & Clean Air Palette */
     :root {
       --bg-primary: #FFFFFF;
-      --bg-secondary: #F8F8F4;
+      --bg-secondary: #F8FAFC;
       --bg-card: #FFFFFF;
-      --bg-nav: #FFFFFF;
-      --text-primary: #1a1a1a;
-      --text-secondary: #4a4a4a;
-      --text-muted: #6b6b6b;
-      --border-color: #e5e5e5;
-      --gold: #16A34A;
-      --gold-light: #22C55E;
-      --gold-dark: #15803D;
-      --shadow: 0 10px 30px rgba(0,0,0,0.08);
-      --nav-text: #1a1a1a;
-      --footer-text: #FFFFFF;
-      --footer-text-muted: #aaaaaa;
-      --footer-bg: #0D0D0D;
+      --bg-card-hover: #F1F5F9;
+      --bg-nav: rgba(255, 255, 255, 0.95);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      
+      --brand-blue: #1D4ED8;
+      --brand-blue-light: #3B82F6;
+      --brand-blue-hover: #1E40AF;
+      --brand-navy: #0F172A;
+      --brand-emerald: #1D4ED8;
+      --brand-emerald-light: #3B82F6;
+      --brand-amber: #1D4ED8;
+      
+      --gold: #1D4ED8;
+      --gold-light: #3B82F6;
+      --gold-dark: #1E40AF;
+      
+      --badge-blue: #EFF6FF;
+      --badge-blue-text: #1D4ED8;
+      --badge-blue: #EFF6FF;
+      --badge-blue-text: #1D4ED8;
+      
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.07), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 30px -10px rgba(15, 23, 42, 0.12);
+      
+      --nav-text: #0F172A;
+      --footer-text: #F8FAFC;
+      --footer-text-muted: #94A3B8;
+      --footer-bg: #0B132B;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
     }
 
     /* Dark mode */
     body.dark {
-      --bg-primary: #0D0D0D;
-      --bg-secondary: #0a0a0a;
-      --bg-card: #141414;
-      --bg-nav: #0D0D0D;
-      --text-primary: #FFFFFF;
-      --text-secondary: #cccccc;
-      --text-muted: #999999;
-      --border-color: #2a2a2a;
-      --gold: #16A34A;
-      --gold-light: #22C55E;
-      --shadow: 0 10px 30px rgba(0,0,0,0.5);
-      --nav-text: #FFFFFF;
-      --footer-text: #FFFFFF;
-      --footer-text-muted: #aaaaaa;
-      --footer-bg: #0D0D0D;
+      --bg-primary: #0B132B;
+      --bg-secondary: #111D3A;
+      --bg-card: #162447;
+      --bg-card-hover: #1C2D56;
+      --bg-nav: rgba(11, 19, 43, 0.95);
+      --text-primary: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #94A3B8;
+      --border-color: #23355C;
+      
+      --brand-blue: #3B82F6;
+      --brand-blue-light: #60A5FA;
+      --brand-blue-hover: #2563EB;
+      --brand-navy: #0F172A;
+      --brand-emerald: #3B82F6;
+      --brand-emerald-light: #60A5FA;
+      --brand-amber: #3B82F6;
+      
+      --gold: #3B82F6;
+      --gold-light: #60A5FA;
+      --gold-dark: #2563EB;
+      
+      --badge-blue: rgba(59, 130, 246, 0.15);
+      --badge-blue-text: #93C5FD;
+      --badge-blue: rgba(59, 130, 246, 0.15);
+      --badge-blue-text: #93C5FD;
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.7);
+      
+      --nav-text: #F8FAFC;
+      --footer-text: #F8FAFC;
+      --footer-text-muted: #94A3B8;
+      --footer-bg: #070D1E;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-primary);
       scroll-behavior: smooth;
-      line-height: 1.5;
+      line-height: 1.6;
       transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
     }
 
     .font-serif {
-      font-family: 'Merriweather', serif;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-weight: 700;
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+        /* Exact Brand Logo matching login.html */
+    .brand-logo, .nav-logo-text {
+      font-family: 'Merriweather', serif !important;
+      font-size: 1.8rem !important;
+      font-weight: 700 !important;
+      color: var(--nav-text) !important;
+      text-decoration: none !important;
+      letter-spacing: -0.5px !important;
+      line-height: 1 !important;
+      display: inline-block !important;
+      transition: color 0.2s ease;
     }
-    .animate-fade-in { animation: fadeInUp 0.8s ease-out; }
+    .brand-logo span, .nav-logo-text span {
+      color: var(--brand-blue) !important;
+      font-style: italic !important;
+      font-family: 'Merriweather', serif !important;
+    }
+    .brand-logo:hover, .nav-logo-text:hover {
+      color: var(--brand-blue) !important;
+    }
+    @media (max-width: 640px) {
+      .brand-logo, .nav-logo-text {
+        font-size: 1.4rem !important;
+      }
+    }
 
-    /* Gold Utilities */
-    .gold-text { color: var(--gold); }
-    .gold-border { border-color: var(--gold); }
-    .gold-bg { background-color: var(--gold); }
-    
-    .btn-gold {
-      background: var(--gold);
-      color: #0D0D0D;
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Buttons */
+    .btn-gold, .btn-primary {
+      background: var(--brand-blue);
+      color: #FFFFFF !important;
       font-weight: 600;
-      padding: 0.85rem 2rem;
-      border-radius: 0;
-      transition: all 0.3s ease;
+      padding: 0.85rem 1.8rem;
+      border-radius: var(--radius-md);
+      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.85rem;
+      border: 1px solid var(--brand-blue);
+      font-size: 0.92rem;
       cursor: pointer;
       text-decoration: none;
+      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.25);
     }
-    .btn-gold:hover {
-      background: transparent;
-      color: var(--gold);
+    .btn-gold:hover, .btn-primary:hover {
+      background: var(--brand-blue-hover);
+      border-color: var(--brand-blue-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.35);
     }
-    .btn-outline-gold {
+
+    .btn-outline-gold, .btn-outline {
       background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 0.75rem 1.8rem;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      letter-spacing: 0.5px;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-primary) !important;
+      padding: 0.82rem 1.7rem;
+      border-radius: var(--radius-md);
+      transition: all 0.25s ease;
+      font-weight: 600;
+      font-size: 0.92rem;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       cursor: pointer;
       text-decoration: none;
     }
-    .btn-outline-gold:hover {
-      background: var(--gold);
-      color: #0D0D0D;
+    .btn-outline-gold:hover, .btn-outline:hover {
+      border-color: var(--brand-blue);
+      color: var(--brand-blue) !important;
+      background: rgba(29, 78, 216, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .badge-blue { background: var(--badge-blue); color: var(--badge-blue-text); }
+    .badge-blue { background: var(--badge-blue); color: var(--badge-blue-text); }
+
+    section {
+      padding: 85px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 0.8rem;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .gold-divider, .brand-divider {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand-blue), var(--brand-blue-light));
+      border-radius: 4px;
+      margin: 0.75rem auto 1.5rem;
     }
 
     /* NAVBAR */
     .navbar {
       background: var(--bg-nav);
+      backdrop-filter: blur(12px);
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      border-bottom: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-bottom: 1px solid var(--border-color);
     }
     .nav-container {
-      max-width: 1400px;
+      max-width: 1380px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
@@ -144,46 +269,73 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 80px;
+      height: 76px;
+    }
+    .nav-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--brand-blue), #2563EB);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
     }
     .nav-logo-text {
-      font-size: 1.8rem !important;
-      font-weight: 700 !important;
+      font-size: 1.45rem;
+      font-weight: 800;
       color: var(--nav-text);
       text-decoration: none;
       letter-spacing: -0.5px;
-      display: inline-block;
-      line-height: 1;
+      line-height: 1.1;
     }
-    .nav-logo-text span {
-      color: var(--gold);
-      font-style: italic;
-      font-family: 'Merriweather', serif;
+    .nav-logo-text span { color: var(--brand-blue); }
+    .nav-logo-tag {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--brand-emerald);
     }
     .nav-menu-container {
       display: flex;
       align-items: center;
       justify-content: center;
       flex: 1;
-      margin: 0 2rem;
+      margin: 0 1.5rem;
     }
     .nav-links-group {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.3rem;
       flex-wrap: wrap;
     }
     .nav-link {
       color: var(--nav-text);
-      font-weight: 500;
-      transition: color 0.3s;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      padding: 0.5rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
       text-decoration: none;
       white-space: nowrap;
     }
-    .nav-link:hover { color: var(--gold); background: rgba(22,163,74,0.15); }
+    .nav-link:hover { color: var(--brand-blue); background: rgba(29, 78, 216, 0.08); }
+    .nav-link.active {
+      color: var(--brand-blue) !important;
+      background: rgba(29, 78, 216, 0.1);
+      font-weight: 700;
+    }
+
     .dropdown-container {
       position: relative;
       display: inline-block;
@@ -192,32 +344,35 @@
       background: none;
       border: none;
       color: var(--nav-text);
-      font-weight: 500;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: var(--radius-sm);
       cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.3s;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: all 0.2s;
       white-space: nowrap;
     }
-    .dropdown-btn:hover { color: var(--gold); background: rgba(22,163,74,0.15); }
+    .dropdown-btn:hover { color: var(--brand-blue); background: rgba(29, 78, 216, 0.08); }
     .dropdown-menu {
       position: absolute;
       left: 0;
+      top: 100%;
       margin-top: 0.5rem;
-      width: 200px;
+      width: 220px;
       background: var(--bg-card);
-      border-radius: 0.5rem;
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s;
-      transform: translateY(10px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(8px);
       z-index: 60;
       border: 1px solid var(--border-color);
+      padding: 0.5rem 0;
     }
     .dropdown-container:hover .dropdown-menu {
       opacity: 1;
@@ -225,521 +380,416 @@
       transform: translateY(0);
     }
     .dropdown-menu a {
-      display: block;
-      padding: 0.75rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.65rem 1.2rem;
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: 0.2s;
     }
-    .dropdown-menu a:hover { background: rgba(22,163,74,0.1); color: var(--gold); }
+    .dropdown-menu a:hover {
+      background: rgba(29, 78, 216, 0.08);
+      color: var(--brand-blue);
+      padding-left: 1.4rem;
+    }
+
     .nav-buttons {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
     .icon-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: rgba(22,163,74,0.2);
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      background: rgba(148, 163, 184, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: 0.2s;
       color: var(--nav-text);
-      border: none;
+      border: 1px solid var(--border-color);
+      font-size: 0.9rem;
     }
-    .icon-btn:hover { background: var(--gold); color: #0D0D0D; }
+    .icon-btn:hover {
+      background: var(--brand-blue);
+      color: #FFFFFF;
+      border-color: var(--brand-blue);
+    }
     .login-btn {
-      background: var(--gold);
-      color: #0D0D0D;
-      padding: 0.5rem 1.5rem;
-      border-radius: 999px;
+      background: var(--brand-blue);
+      color: #FFFFFF !important;
+      padding: 0.52rem 1.25rem;
+      border-radius: var(--radius-md);
       font-weight: 600;
       text-decoration: none;
-      font-size: 0.85rem;
-      transition: 0.3s;
+      font-size: 0.88rem;
+      transition: 0.25s;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .login-btn:hover { background: var(--brand-blue-hover); }
+    .register-btn {
+      background: rgba(29, 78, 216, 0.1);
+      color: var(--brand-blue) !important;
+      padding: 0.52rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: 0.25s;
       white-space: nowrap;
     }
-    .login-btn:hover { background: var(--gold-light); transform: scale(1.02); }
-    
-    /* Mobile Menu Button */
+
     .mobile-menu-btn {
       display: none;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 10px;
-      z-index: 1001;
-      position: relative;
-    }
-    .hamburger-icon {
-      font-size: 1.8rem;
+      padding: 8px;
       color: var(--nav-text);
-      transition: all 0.3s ease;
+      font-size: 1.5rem;
     }
-    .close-icon {
-      font-size: 1.8rem;
-      color: var(--nav-text);
-      transition: all 0.3s ease;
-      display: none;
-    }
-    .mobile-menu-btn.active .hamburger-icon { display: none; }
-    .mobile-menu-btn.active .close-icon { display: block; }
-    
-    /* Mobile Menu Panel */
     .mobile-menu-panel {
       position: fixed;
-      top: 80px;
+      top: 76px;
       left: 0;
       right: 0;
       background: var(--bg-nav);
-      border-top: none;
+      backdrop-filter: blur(12px);
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease-out;
+      transition: max-height 0.35s ease;
       z-index: 999;
-      box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+      border-bottom: 1px solid var(--border-color);
     }
-    .mobile-menu-panel.show {
-      max-height: calc(100vh - 80px);
-      overflow-y: auto;
-    }
-    .mobile-menu-inner { padding: 0.5rem 0; }
-    .mobile-nav-item { border-bottom: 1px solid rgba(22,163,74,0.1); }
-    .mobile-nav-link {
-      color: var(--nav-text);
-      text-decoration: none;
-      display: block;
-      padding: 1rem 1.5rem;
-      font-weight: 500;
-      transition: 0.2s;
-    }
-    .mobile-nav-link:hover { color: var(--gold); background: rgba(22,163,74,0.1); }
-    
-    .mobile-dropdown-item { border-bottom: 1px solid rgba(22,163,74,0.1); }
-    .mobile-dropdown-btn {
-      width: 100%;
-      background: none;
-      border: none;
-      color: var(--nav-text);
+    .mobile-menu-panel.show { max-height: calc(100vh - 76px); overflow-y: auto; }
+    .mobile-menu-inner { padding: 1rem 0; }
+    .mobile-nav-item a, .mobile-dropdown-btn {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 0.9rem 1.5rem;
+      color: var(--nav-text);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-color);
+      width: 100%;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: inherit;
       font-size: 1rem;
       text-align: left;
-      cursor: pointer;
-      font-weight: 500;
-      transition: 0.2s;
     }
-    .mobile-dropdown-btn:hover { color: var(--gold); background: rgba(22,163,74,0.1); }
-    .mobile-dropdown-icon { transition: transform 0.3s ease; }
-    .mobile-dropdown-icon.rotated { transform: rotate(180deg); }
     .mobile-submenu {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
+      background: rgba(0,0,0,0.02);
     }
-    .mobile-submenu.show { max-height: 300px; }
+    .mobile-submenu.show { max-height: 250px; }
     .mobile-submenu a {
+      padding: 0.75rem 2rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
       display: block;
-      padding: 0.75rem 1rem;
-      color: var(--nav-text);
-      text-decoration: none;
-      opacity: 0.8;
-      transition: 0.2s;
-      border-left: 2px solid transparent;
+      border-bottom: 1px solid var(--border-color);
     }
-    .mobile-submenu a:hover {
-      color: var(--gold);
-      opacity: 1;
-      border-left-color: var(--gold);
-      background: rgba(22,163,74,0.05);
-    }
-    .mobile-login-btn {
-      display: inline-block;
-      margin: 1rem 1.5rem;
-      background: var(--gold);
-      color: #0D0D0D;
-      padding: 0.75rem 1.5rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      text-align: center;
-    }
-    .mobile-theme-rtl {
+    .mobile-btn-wrap {
       display: flex;
       gap: 1rem;
-      padding: 1rem 1.5rem;
-      border-top: 1px solid rgba(22,163,74,0.15);
-      margin-top: 0.5rem;
-      flex-wrap: wrap;
+      padding: 1.2rem 1.5rem;
     }
-    .mobile-icon-btn {
-      background: rgba(22,163,74,0.2);
-      border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 999px;
-      color: var(--nav-text);
-      cursor: pointer;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .mobile-icon-btn:hover { background: var(--gold); color: #0D0D0D; }
 
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      background: #0f172a;
-      display: flex;
-      align-items: center;
+    /* ================================================= */
+    /* HERO HEADER FOR SERVICES PAGE                     */
+    /* ================================================= */
+    .services-hero {
       position: relative;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      background: linear-gradient(135deg, #070D1E 0%, #0F172A 60%, #172554 100%);
+      color: #FFFFFF;
+      overflow: hidden;
     }
-    .hero::before {
-      content: '';
+    .services-hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 100%);
-      z-index: 1;
-    }
-    .hero h1, .hero h2, .hero p {
-      color: #ffffff !important;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=2070&auto=format') center/cover no-repeat;
-      opacity: 0.9;
+      background-image: 
+        radial-gradient(circle at 80% 20%, rgba(29, 78, 216, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(29, 78, 216, 0.25) 0%, transparent 45%);
       pointer-events: none;
     }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
-    section { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
-    .section-title {
-      font-size: 3rem;
-      font-family: 'Merriweather', serif;
-      text-align: center;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-    }
-    .gold-divider {
-      width: 70px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0.8rem auto 2rem;
-    }
-    .section-sub {
-      text-align: center;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto 3rem;
-    }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 2rem;
-      transition: all 0.3s;
-    }
-    .card:hover { border-color: var(--gold); transform: translateY(-6px); }
-    .card-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 1.5rem; }
-    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.8rem; }
-    .step-item { background: var(--bg-card); padding: 1.8rem; text-align: center; border-bottom: 2px solid var(--gold); }
-    .testimonial-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
-    .testimonial-card { background: var(--bg-card); padding: 2rem; border-left: 3px solid var(--gold); }
-    .faq-item { background: var(--bg-card); margin-bottom: 1rem; border-left: 2px solid var(--gold); }
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 1.2rem;
-      text-align: left;
-      font-weight: 600;
-      color: var(--text-primary);
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s;
-      padding: 0 1.2rem;
-      color: var(--text-secondary);
-    }
-    .faq-answer.open { max-height: 200px; padding-bottom: 1rem; }
-    .cta-banner {
-      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
-      text-align: center;
-      padding: 3rem;
-      border: 1px solid var(--gold);
-      margin-top: 3rem;
-    }
-    
-    /* FOOTER */
-    footer {
-      background: var(--footer-bg);
-      padding-top: 80px;
-      padding-bottom: 40px;
-      border-top: 1px solid rgba(22,163,74,0.2);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    .footer-col h4 {
-      font-size: 1.2rem;
+    .services-hero h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #FFFFFF;
       margin-bottom: 1.2rem;
-      font-weight: 700;
-      color: var(--footer-text);
     }
-    .footer-col a {
-      display: block;
-      color: var(--footer-text-muted);
-      text-decoration: none;
-      margin-bottom: 0.6rem;
-      transition: 0.2s;
-      font-size: 0.85rem;
-    }
-    .footer-col a:hover { color: var(--gold); }
-    .footer-col p {
-      color: var(--footer-text-muted);
-      line-height: 1.6;
-    }
-    .footer-col span {
-      color: var(--footer-text-muted);
-    }
-    .footer-logo {
-      font-size: 1.8rem !important;
-      font-weight: 700 !important;
-      color: var(--footer-text) !important;
-      text-decoration: none !important;
-      letter-spacing: -0.5px !important;
-      display: inline-block !important;
-      line-height: 1 !important;
-      margin-bottom: 1rem !important;
-    }
-    .footer-logo span {
-      color: var(--gold) !important;
-      font-style: italic !important;
-      font-family: 'Merriweather', serif !important;
-    }
-    .social-icons a {
-      display: inline-block;
-      margin-right: 1rem;
-      font-size: 1.2rem;
-      color: var(--footer-text-muted);
-      transition: 0.2s;
-    }
-    .social-icons a:hover { color: var(--gold); }
-    .footer-contact-item {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 12px;
-      align-items: flex-start;
-    }
-    .footer-contact-item i {
-      color: var(--gold);
-      margin-top: 2px;
-      min-width: 16px;
-    }
-    .footer-contact-item span, .footer-contact-item a {
-      color: var(--footer-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      line-height: 1.5;
-    }
-    .footer-contact-item a:hover {
-      color: var(--gold);
-    }
-    .footer-copyright {
-      border-top: 1px solid rgba(22,163,74,0.15);
-      padding-top: 2rem;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      color: var(--footer-text-muted);
-      font-size: 0.8rem;
-    }
-    .footer-copyright a {
-      color: var(--footer-text-muted);
-      text-decoration: none;
-      margin-right: 1rem;
-      transition: 0.2s;
-    }
-    .footer-copyright a:hover {
-      color: var(--gold);
-    }
-    
-    /* Responsive Breakpoints */
-    @media (max-width: 1180px) {
-      .nav-menu-container, .nav-buttons { display: none; }
-      .mobile-menu-btn { display: block; }
-    }
-    
-    @media (max-width: 1024px) {
-      .steps-grid { grid-template-columns: repeat(2,1fr); }
-      .section-title { font-size: 2.5rem; }
-      .hero h1 { font-size: 3rem !important; }
-      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-    }
-    
-    @media (max-width: 768px) {
-      .steps-grid { grid-template-columns: 1fr; }
-      .testimonial-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .section-title { font-size: 2rem; }
-      .hero h1 { font-size: 2.2rem !important; }
-      .container { padding: 0 1rem; }
-      section { padding: 60px 0; }
-      .footer-logo { font-size: 1.8rem !important; }
-    }
-    
-    @media (min-width: 1025px) and (max-width: 1180px) {
-      .nav-menu-container, .nav-buttons { display: none; }
-      .mobile-menu-btn { display: block; }
-    }
-    
-    @media (max-width: 480px) {
-      .btn-gold, .btn-outline-gold { padding: 0.6rem 1.2rem; font-size: 0.75rem; }
-      .mobile-theme-rtl { flex-direction: column; }
-      .footer-copyright { flex-direction: column; text-align: center; }
-      .footer-logo { font-size: 1.8rem !important; }
-    }
-    
-    /* Active Nav Link */
-    .nav-link.active,
-    .dropdown-menu a.active,
-    .mobile-nav-link.active,
-    .mobile-submenu a.active {
-      color: var(--gold) !important;
-      background: rgba(22,163,74,0.15);
-    }
-    .nav-link.active {
-      border-bottom: 2px solid var(--gold);
+    .services-hero p {
+      color: #CBD5E1;
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin-bottom: 2rem;
     }
 
-    /* ----- SERVICE DETAILS OVERLAY ----- */
+    /* ================================================= */
+    /* SERVICES GRID WITH RICH PHOTOGRAPHY               */
+    /* ================================================= */
+    .services-grid-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .service-card-img-wrap {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card-img-wrap:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-blue);
+    }
+    .service-img-banner {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+    .service-img-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .service-card-img-wrap:hover .service-img-banner img {
+      transform: scale(1.06);
+    }
+    .service-category-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #FFFFFF;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+    }
+    .service-price-pill {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: var(--brand-blue);
+      color: #FFFFFF;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 0.88rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .service-card-content {
+      padding: 1.8rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card-content h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .service-card-content p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .service-action-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* ================================================= */
+    /* SPLIT FEATURE SECTIONS WITH IMAGERY               */
+    /* ================================================= */
+    .feature-split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .feature-split-img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+    }
+
+    /* ================================================= */
+    /* DYNAMIC SERVICE DETAIL MODAL OVERLAY             */
+    /* ================================================= */
     .service-detail-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(6px);
+      background: rgba(11, 19, 43, 0.8);
+      backdrop-filter: blur(8px);
       z-index: 2000;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
     }
-    .service-detail-overlay.active {
-      display: flex;
-    }
+    .service-detail-overlay.active { display: flex; }
     .service-detail-card {
       background: var(--bg-card);
-      max-width: 800px;
+      max-width: 780px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      padding: 2.5rem;
-      border-radius: 0.5rem;
-      border: 1px solid var(--gold);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--brand-blue);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
       position: relative;
       color: var(--text-primary);
     }
+    .service-detail-header-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-top-left-radius: var(--radius-lg);
+      border-top-right-radius: var(--radius-lg);
+    }
+    .service-detail-inner {
+      padding: 2.2rem;
+    }
     .service-detail-close {
       position: absolute;
-      top: 1.2rem;
-      right: 1.5rem;
-      background: none;
+      top: 16px;
+      right: 20px;
+      background: rgba(15, 23, 42, 0.7);
+      color: #FFFFFF;
       border: none;
-      font-size: 2rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      color: var(--text-secondary);
-      transition: color 0.2s;
-      line-height: 1;
+      transition: all 0.2s;
+      z-index: 10;
     }
     .service-detail-close:hover {
-      color: var(--gold);
-    }
-    .service-detail-icon {
-      font-size: 3rem;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-    .service-detail-card h2 {
-      font-family: 'Merriweather', serif;
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-    }
-    .service-detail-card .gold-divider {
-      margin: 0.8rem 0 1.8rem;
-    }
-    .service-detail-card p {
-      color: var(--text-secondary);
-      margin-bottom: 1.2rem;
-      line-height: 1.7;
-    }
-    .service-detail-card ul {
-      margin-bottom: 1.8rem;
-      padding-left: 1.5rem;
-      list-style: none;
-    }
-    .service-detail-card li {
-      margin-bottom: 0.6rem;
-      color: var(--text-secondary);
-    }
-    .service-detail-card .detail-cta {
-      margin-top: 1.8rem;
-    }
-    .service-detail-card .detail-cta a {
-      margin-right: 0.8rem;
+      background: var(--brand-blue);
+      transform: scale(1.1);
     }
 
-    /* Additional split feature section */
-    .feature-split {
-      display: flex;
-      flex-wrap: wrap;
+    /* FOOTER */
+    footer {
+      background: var(--footer-bg);
+      padding-top: 80px;
+      padding-bottom: 40px;
+      border-top: 1px solid var(--border-color);
+      color: var(--footer-text);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
       gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+    .footer-col h4 {
+      font-size: 1.05rem;
+      margin-bottom: 1.3rem;
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+    .footer-col a {
+      display: block;
+      color: var(--footer-text-muted);
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+      transition: 0.2s;
+      font-size: 0.88rem;
+    }
+    .footer-col a:hover { color: #60A5FA; padding-left: 4px; }
+    .footer-col p { color: var(--footer-text-muted); line-height: 1.6; font-size: 0.88rem; }
+    .social-icons a {
+      display: inline-flex;
       align-items: center;
-    }
-    .feature-split-content {
-      flex: 1;
-      min-width: 300px;
-    }
-    .feature-split-media {
-      flex: 1;
-      min-width: 280px;
-      background: var(--bg-card);
-      border: 1px solid var(--gold);
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
       justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      margin-right: 0.6rem;
+      transition: 0.2s;
     }
-    .feature-split-media i {
-      font-size: 2.5rem;
-      color: var(--gold);
-      margin-bottom: 1rem;
+    .social-icons a:hover { background: var(--brand-blue); transform: translateY(-2px); }
+    .footer-contact-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+      font-size: 0.88rem;
     }
-    .feature-split-media h3 {
-      font-family: 'Merriweather', serif;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+    .footer-contact-item i { color: #60A5FA; margin-top: 4px; }
+    .footer-copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--footer-text-muted);
+      font-size: 0.82rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1180px) {
+      .nav-menu-container, .nav-buttons { display: none; }
+      .mobile-menu-btn { display: block; }
+      .services-grid-wrapper { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 1024px) {
+      .feature-split-layout { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .services-hero h1 { font-size: 2.5rem; }
+      .section-title { font-size: 2rem; }
+      .services-grid-wrapper { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .service-detail-inner { padding: 1.5rem; }
     }
   </style>
 </head>
@@ -750,15 +800,16 @@
   <div class="nav-container">
     <div class="flex-nav">
       <div class="flex-shrink-0">
-        <a href="index.html" class="nav-logo-text"><span>Apex Inspect</span></a>
+        <a href="index.html" class="brand-logo"><span>Apex Inspect</span></a>
       </div>
+
       <div class="nav-menu-container">
         <div class="nav-links-group">
           <div class="dropdown-container">
-            <button class="dropdown-btn">Home <i class="fas fa-chevron-down"></i></button>
+            <button class="dropdown-btn">Home <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></button>
             <div class="dropdown-menu">
-              <a href="index.html">Home 1</a>
-              <a href="home2.html">Home 2</a>
+              <a href="index.html"><i class="fas fa-gauge-high"></i> Home 1 (Drive-Thru)</a>
+              <a href="home2.html"><i class="fas fa-certificate"></i> Home 2 (Enterprise)</a>
             </div>
           </div>
           <a href="services.html" class="nav-link active">Services</a>
@@ -767,209 +818,308 @@
           <a href="faq.html" class="nav-link">FAQ</a>
           <a href="contact.html" class="nav-link">Contact</a>
           <div class="dropdown-container">
-            <button class="dropdown-btn">Portal <i class="fas fa-chevron-down"></i></button>
+            <button class="dropdown-btn">Portal <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i></button>
             <div class="dropdown-menu">
-              <a href="admin.html">Admin Dashboard</a>
-              <a href="user.html">Vendor Dashboard</a>
+              <a href="admin.html"><i class="fas fa-shield-alt"></i> Admin Dashboard</a>
+              <a href="user.html"><i class="fas fa-truck-ramp-box"></i> Vendor Dashboard</a>
             </div>
           </div>
         </div>
       </div>
+
       <div class="nav-buttons">
-        <a href="login.html" class="login-btn"> Login</a>
-        <a href="register.html" class="login-btn"> Register</a>
-        <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
-        <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
+        <a href="login.html" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="register.html" class="register-btn">Register</a>
+        <button id="rtl-toggle" class="icon-btn" title="RTL Switch"><i class="fas fa-exchange-alt"></i></button>
+        <button id="theme-toggle" class="icon-btn" title="Toggle Theme"><i class="fas fa-moon"></i></button>
       </div>
-      
-      <!-- Hamburger Menu Button -->
-      <button id="mobile-menu-btn" class="mobile-menu-btn">
-        <i class="fas fa-bars hamburger-icon"></i>
-        <i class="fas fa-times close-icon"></i>
+
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
       </button>
     </div>
   </div>
-  
-  <!-- Mobile Menu Panel -->
+
   <div id="mobile-menu-panel" class="mobile-menu-panel">
     <div class="mobile-menu-inner">
       <div class="mobile-dropdown-item">
-        <button class="mobile-dropdown-btn" data-dropdown="home-dropdown">
-          Home <i class="fas fa-chevron-down mobile-dropdown-icon" id="home-dropdown-icon"></i>
-        </button>
-        <div class="mobile-submenu" id="home-submenu">
-          <a href="index.html">Home 1</a>
-          <a href="home2.html">Home 2</a>
+        <button class="mobile-dropdown-btn"><span>Home</span> <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button>
+        <div class="mobile-submenu">
+          <a href="index.html">Home 1 (Drive-Thru)</a>
+          <a href="home2.html">Home 2 (Enterprise)</a>
         </div>
       </div>
-      
-      <div class="mobile-nav-item"><a href="services.html" class="mobile-nav-link active">Services</a></div>
-      <div class="mobile-nav-item"><a href="emissions.html" class="mobile-nav-link">Emissions</a></div>
-      <div class="mobile-nav-item"><a href="locations.html" class="mobile-nav-link">Locations</a></div>
-      <div class="mobile-nav-item"><a href="faq.html" class="mobile-nav-link">FAQ</a></div>
-      <div class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></div>
-      
+      <div class="mobile-nav-item"><a href="services.html">Services</a></div>
+      <div class="mobile-nav-item"><a href="emissions.html">Emissions Testing</a></div>
+      <div class="mobile-nav-item"><a href="locations.html">Locations</a></div>
+      <div class="mobile-nav-item"><a href="faq.html">FAQ</a></div>
+      <div class="mobile-nav-item"><a href="contact.html">Contact Us</a></div>
       <div class="mobile-dropdown-item">
-        <button class="mobile-dropdown-btn" data-dropdown="portal-dropdown">
-          Portal <i class="fas fa-chevron-down mobile-dropdown-icon" id="portal-dropdown-icon"></i>
-        </button>
-        <div class="mobile-submenu" id="portal-submenu">
+        <button class="mobile-dropdown-btn"><span>Portal</span> <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button>
+        <div class="mobile-submenu">
           <a href="admin.html">Admin Dashboard</a>
           <a href="user.html">Vendor Dashboard</a>
         </div>
       </div>
-      
-      <div class="mobile-nav-item">
-        <a href="login.html" class="mobile-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
-        <a href="register.html" class="mobile-login-btn"><i class="fas fa-user-plus"></i> Register</a>
+      <div class="mobile-btn-wrap">
+        <a href="login.html" class="btn-primary" style="flex:1; justify-content:center;">Login</a>
+        <a href="register.html" class="btn-outline" style="flex:1; justify-content:center;">Register</a>
       </div>
-      <div class="mobile-theme-rtl">
-        <button id="mobile-theme-toggle" class="mobile-icon-btn"><i class="fas fa-moon"></i> Theme</button>
-        <button id="mobile-rtl-toggle" class="mobile-icon-btn"><i class="fas fa-exchange-alt"></i> RTL</button>
+      <div style="display:flex; gap:10px; padding: 0.5rem 1.5rem 1rem;">
+        <button id="mobile-theme-toggle" class="icon-btn" style="width:auto; padding:0 1rem; gap:8px; border-radius:6px; font-size:0.85rem;"><i class="fas fa-moon"></i> Theme</button>
+        <button id="mobile-rtl-toggle" class="icon-btn" style="width:auto; padding:0 1rem; gap:8px; border-radius:6px; font-size:0.85rem;"><i class="fas fa-exchange-alt"></i> RTL</button>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- HERO / PAGE HEADER -->
-<section class="hero" style="padding-top: 80px; min-height: 45vh;">
-  <div class="hero-overlay"></div>
+<!-- SERVICES HERO -->
+<section class="services-hero">
+  <div class="services-hero-overlay"></div>
   <div class="container" style="position:relative; z-index:2;">
-    <div class="animate-fade-in" style="max-width:700px;">
-      <h1 class="font-serif" style="font-size: 3.5rem; margin-bottom:1.5rem; color: var(--text-primary);">Our <span class="gold-text">Services</span></h1>
-      <p style="color: var(--text-secondary); font-size:1.1rem; margin-bottom:2rem;">State-certified inspections, emissions testing, and DMV services — all under one roof. Fast, reliable, no hidden fees.</p>
-      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-        <a href="#services-grid" class="btn-gold">Explore Services <i class="fas fa-arrow-down"></i></a>
-        <a href="contact.html" class="btn-outline-gold">Schedule Inspection</a>
+    <div class="animate-fade-in">
+      <span class="badge badge-blue" style="margin-bottom:1rem;"><i class="fas fa-shield-halved"></i> State Certified & DMV Authorized</span>
+      <h1>Our Vehicle Inspection <span style="color:#60A5FA;">& Testing Services</span></h1>
+      <p>
+        From routine annual safety checks and clean air emissions testing to commercial diesel opacity and out-of-state VIN verification. Fast drive-thru bays, licensed inspectors, zero mechanic upselling.
+      </p>
+      <div style="display:flex; gap:1.2rem; flex-wrap:wrap;">
+        <a href="#services-grid" class="btn-primary"><i class="fas fa-arrow-down"></i> Explore 7 Core Services</a>
+        <a href="contact.html" class="btn-outline" style="border-color:rgba(255,255,255,0.3); color:#FFFFFF !important;"><i class="fas fa-clock"></i> Check Drive-Thru Hours</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SEVEN SERVICE SECTIONS (main grid) -->
-<section id="services-grid" style="background: var(--bg-secondary); border-bottom: none; padding-bottom: 60px;">
+<!-- MAIN 7 SERVICES GRID WITH IMAGES -->
+<section id="services-grid" style="background:var(--bg-secondary);">
   <div class="container">
-    <h2 class="section-title">Complete <span class="gold-text">Inspection Services</span></h2>
-    <div class="gold-divider"></div>
-    <p class="section-sub">Seven specialised services to keep you compliant and safe on the road.</p>
-    
-    <div class="grid-3" style="margin-bottom: 2rem;">
+    <div style="text-align:center;">
+      <span class="badge badge-blue" style="margin-bottom:0.75rem;"><i class="fas fa-wrench"></i> Full Certification Suite</span>
+      <h2 class="section-title">Specialized Inspection Services</h2>
+      <div class="brand-divider"></div>
+      <p class="section-sub">Click "Learn More" on any service to view state compliance requirements, check items, turnaround time, and transparent pricing.</p>
+    </div>
+
+    <div class="services-grid-wrapper">
       <!-- 1. Safety Inspection -->
-      <div class="card">
-        <i class="fas fa-shield-alt card-icon"></i>
-        <h3 class="font-serif" style="margin-bottom:0.8rem;">Safety Inspection</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">Comprehensive check of brakes, lights, tires, steering, and more to ensure your vehicle meets all state safety standards.</p>
-        <a href="#" class="btn-outline-gold service-learn-more" data-service="safety" style="padding: 0.6rem 1.4rem; font-size: 0.8rem;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <div class="service-card-img-wrap">
+        <div class="service-img-banner">
+          <img src="images/service-safety.jpg" alt="State Safety Inspection">
+          <span class="service-category-badge">State Mandatory</span>
+          <span class="service-price-pill">$39.99</span>
+        </div>
+        <div class="service-card-content">
+          <h3>Safety Inspection</h3>
+          <p>Comprehensive diagnostic check of brakes, lighting, tires, steering, and suspension to meet strict state highway safety regulations.</p>
+          <div class="service-action-row">
+            <a href="#" class="btn-primary service-learn-more" data-service="safety" style="padding:0.6rem 1.2rem; font-size:0.85rem;">Learn Details <i class="fas fa-arrow-right"></i></a>
+            <span style="font-size:0.8rem; color:var(--text-muted);"><i class="fas fa-clock"></i> 10-15 Min</span>
+          </div>
+        </div>
       </div>
+
       <!-- 2. Emissions Testing -->
-      <div class="card">
-        <i class="fas fa-leaf card-icon"></i>
-        <h3 class="font-serif" style="margin-bottom:0.8rem;">Emissions Testing</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">Quick and accurate emissions analysis to keep your vehicle compliant with environmental regulations.</p>
-        <a href="#" class="btn-outline-gold service-learn-more" data-service="emissions" style="padding: 0.6rem 1.4rem; font-size: 0.8rem;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <div class="service-card-img-wrap">
+        <div class="service-img-banner">
+          <img src="images/service-emissions.jpg" alt="Emissions and Smog Testing">
+          <span class="service-category-badge">Clean Air</span>
+          <span class="service-price-pill">$29.99</span>
+        </div>
+        <div class="service-card-content">
+          <h3>Emissions Testing</h3>
+          <p>State-certified emissions diagnostic using computerized OBD-II telemetry and exhaust gas spectrometry. Electronic reporting direct to DMV.</p>
+          <div class="service-action-row">
+            <a href="#" class="btn-primary service-learn-more" data-service="emissions" style="padding:0.6rem 1.2rem; font-size:0.85rem;">Learn Details <i class="fas fa-arrow-right"></i></a>
+            <span style="font-size:0.8rem; color:var(--text-muted);"><i class="fas fa-clock"></i> 8-10 Min</span>
+          </div>
+        </div>
       </div>
+
       <!-- 3. VIN Verification -->
-      <div class="card">
-        <i class="fas fa-clipboard-check card-icon"></i>
-        <h3 class="font-serif" style="margin-bottom:0.8rem;">VIN Verification</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">Official VIN verification for out-of-state vehicles, title transfers, and other DMV requirements.</p>
-        <a href="#" class="btn-outline-gold service-learn-more" data-service="vin" style="padding: 0.6rem 1.4rem; font-size: 0.8rem;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <div class="service-card-img-wrap">
+        <div class="service-img-banner">
+          <img src="images/service-vin.jpg" alt="Official VIN Verification">
+          <span class="service-category-badge">DMV Titling</span>
+          <span class="service-price-pill">$25.00</span>
+        </div>
+        <div class="service-card-content">
+          <h3>VIN Verification</h3>
+          <p>Official physical serial and chassis verification for out-of-state vehicle registration, title transfers, and state DMV documentation.</p>
+          <div class="service-action-row">
+            <a href="#" class="btn-primary service-learn-more" data-service="vin" style="padding:0.6rem 1.2rem; font-size:0.85rem;">Learn Details <i class="fas fa-arrow-right"></i></a>
+            <span style="font-size:0.8rem; color:var(--text-muted);"><i class="fas fa-clock"></i> 5 Min</span>
+          </div>
+        </div>
       </div>
+
       <!-- 4. Diesel Emissions -->
-      <div class="card">
-        <i class="fas fa-truck card-icon"></i>
-        <h3 class="font-serif" style="margin-bottom:0.8rem;">Diesel Emissions</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">Heavy-duty diesel testing with opacity meters and OBD checks for commercial vehicles and trucks.</p>
-        <a href="#" class="btn-outline-gold service-learn-more" data-service="diesel" style="padding: 0.6rem 1.4rem; font-size: 0.8rem;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <div class="service-card-img-wrap">
+        <div class="service-img-banner">
+          <img src="images/service-diesel.jpg" alt="Heavy Duty Diesel Opacity Testing">
+          <span class="service-category-badge">Commercial</span>
+          <span class="service-price-pill">$49.99</span>
+        </div>
+        <div class="service-card-content">
+          <h3>Diesel Emissions</h3>
+          <p>Heavy-duty diesel testing with calibrated opacity meters and OBD diagnostics for commercial trucks, rigs, and industrial transport.</p>
+          <div class="service-action-row">
+            <a href="#" class="btn-primary service-learn-more" data-service="diesel" style="padding:0.6rem 1.2rem; font-size:0.85rem;">Learn Details <i class="fas fa-arrow-right"></i></a>
+            <span style="font-size:0.8rem; color:var(--text-muted);"><i class="fas fa-clock"></i> 15-20 Min</span>
+          </div>
+        </div>
       </div>
+
       <!-- 5. Fleet & Commercial -->
-      <div class="card">
-        <i class="fas fa-building card-icon"></i>
-        <h3 class="font-serif" style="margin-bottom:0.8rem;">Fleet & Commercial</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">Volume discounts and priority scheduling for business fleets and commercial vehicles.</p>
-        <a href="#" class="btn-outline-gold service-learn-more" data-service="fleet" style="padding: 0.6rem 1.4rem; font-size: 0.8rem;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <div class="service-card-img-wrap">
+        <div class="service-img-banner">
+          <img src="images/service-fleet.jpg" alt="Fleet and Commercial Testing">
+          <span class="service-category-badge">Volume Rates</span>
+          <span class="service-price-pill">Custom</span>
+        </div>
+        <div class="service-card-content">
+          <h3>Fleet & Commercial</h3>
+          <p>Priority lane access, consolidated billing, and on-site testing for municipal, courier, and commercial delivery fleets.</p>
+          <div class="service-action-row">
+            <a href="#" class="btn-primary service-learn-more" data-service="fleet" style="padding:0.6rem 1.2rem; font-size:0.85rem;">Learn Details <i class="fas fa-arrow-right"></i></a>
+            <span style="font-size:0.8rem; color:var(--text-muted);"><i class="fas fa-building"></i> Commercial</span>
+          </div>
+        </div>
       </div>
+
       <!-- 6. Motorcycle Inspection -->
-      <div class="card">
-        <i class="fas fa-motorcycle card-icon"></i>
-        <h3 class="font-serif" style="margin-bottom:0.8rem;">Motorcycle Inspection</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">Specialized safety and emissions testing for motorcycles, scooters, and mopeds.</p>
-        <a href="#" class="btn-outline-gold service-learn-more" data-service="motorcycle" style="padding: 0.6rem 1.4rem; font-size: 0.8rem;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <div class="service-card-img-wrap">
+        <div class="service-img-banner">
+          <img src="images/service-motorcycle.jpg" alt="Motorcycle Safety Inspection">
+          <span class="service-category-badge">Two-Wheel</span>
+          <span class="service-price-pill">$19.99</span>
+        </div>
+        <div class="service-card-content">
+          <h3>Motorcycle Inspection</h3>
+          <p>Specialized safety and emissions testing for all motorcycles, scooters, mopeds, and trikes with dedicated motorcycle ramp lanes.</p>
+          <div class="service-action-row">
+            <a href="#" class="btn-primary service-learn-more" data-service="motorcycle" style="padding:0.6rem 1.2rem; font-size:0.85rem;">Learn Details <i class="fas fa-arrow-right"></i></a>
+            <span style="font-size:0.8rem; color:var(--text-muted);"><i class="fas fa-clock"></i> 10 Min</span>
+          </div>
+        </div>
       </div>
+
       <!-- 7. RV & Trailer Inspection -->
-      
-    </div>
-  </div>
-</section>
-
-<!-- CTA SECTION -->
-<section style="background: var(--gold); border-bottom:none; padding: 80px 0;">
-  <div class="container" style="text-align:center;">
-    <h2 class="section-title" style="color:#FFFFFF;">Need a <span style="color:#0D0D0D;">custom inspection?</span></h2>
-    <p style="color: rgba(255,255,255,0.9); margin-bottom:2rem; font-size:1.1rem;">We also offer specialty inspections for imported vehicles, antique cars, and more. Contact us for details.</p>
-    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-      <a href="book.html" class="btn-gold" style="background:#FFFFFF; color:#0D0D0D; border-color:#FFFFFF;">Book Appointment</a>
-      <a href="contact.html" class="btn-outline-gold" style="border-color:#FFFFFF; color:#FFFFFF;">Contact Us</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TWO ADDITIONAL SECTIONS AFTER CUSTOM INSPECTION CTA ===== -->
-
-<!-- SECTION 8: Imported Vehicle Inspection (split layout) -->
-<section id="imported" style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
-  <div class="container">
-    <div class="feature-split">
-      <div class="feature-split-content">
-        <h2 class="section-title" style="text-align:left; font-size: 2.4rem;">Imported Vehicle <span class="gold-text">Inspection</span></h2>
-        <div class="gold-divider" style="margin: 0.8rem 0 2rem;"></div>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Bringing a vehicle from another country? We provide the specialized inspections and documentation you need to register it legally in the state.</p>
-        <ul style="list-style: none; margin-bottom: 2rem;">
-          <li style="display: flex; gap: 12px; margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px;"></i><span>FMVSS compliance verification</span></li>
-          <li style="display: flex; gap: 12px; margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px;"></i><span>EPA and DOT documentation review</span></li>
-          <li style="display: flex; gap: 12px; margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px;"></i><span>VIN plate and odometer verification</span></li>
-          <li style="display: flex; gap: 12px; margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px;"></i><span>State registration paperwork assistance</span></li>
-        </ul>
-        <a href="#" class="btn-gold service-learn-more" data-service="imported">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="feature-split-media">
-        <i class="fas fa-globe"></i>
-        <h3>Global to Local</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">We handle the paperwork, inspections, and compliance checks so you can get your imported vehicle on the road without the headache.</p>
-        <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
-          <p class="gold-text" style="font-weight: 700;">Starting at $89.99</p>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Includes documentation review</p>
+      <div class="service-card-img-wrap">
+        <div class="service-img-banner">
+          <img src="images/service-rv.jpg" alt="RV and Trailer Inspection">
+          <span class="service-category-badge">Towable & RV</span>
+          <span class="service-price-pill">$59.99</span>
+        </div>
+        <div class="service-card-content">
+          <h3>RV & Trailer Inspection</h3>
+          <p>Comprehensive safety inspections for motorhomes, fifth wheels, utility trailers, and camper units including brake synchronization.</p>
+          <div class="service-action-row">
+            <a href="#" class="btn-primary service-learn-more" data-service="rv" style="padding:0.6rem 1.2rem; font-size:0.85rem;">Learn Details <i class="fas fa-arrow-right"></i></a>
+            <span style="font-size:0.8rem; color:var(--text-muted);"><i class="fas fa-clock"></i> 25 Min</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 9: Antique & Classic Vehicle Inspection (split layout reversed) -->
-<section id="antique" style="background: var(--bg-primary); border-bottom: none;">
+<!-- SPECIALTY SECTION 8: IMPORTED VEHICLE INSPECTION -->
+<section id="imported" style="background:var(--bg-primary);">
   <div class="container">
-    <div class="feature-split" style="flex-direction: row-reverse;">
-      <div class="feature-split-content">
-        <h2 class="section-title" style="text-align:left; font-size: 2.4rem;">Antique & Classic <span class="gold-text">Vehicle Inspection</span></h2>
-        <div class="gold-divider" style="margin: 0.8rem 0 2rem;"></div>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Preserving automotive history with respect. Our antique and classic inspections are designed for vehicles 25+ years old, with special care for original components.</p>
-        <ul style="list-style: none; margin-bottom: 2rem;">
-          <li style="display: flex; gap: 12px; margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px;"></i><span>Age-appropriate safety standards</span></li>
-          <li style="display: flex; gap: 12px; margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px;"></i><span>Original equipment preservation review</span></li>
-          <li style="display: flex; gap: 12px; margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px;"></i><span>Historic registration documentation</span></li>
-          <li style="display: flex; gap: 12px; margin-bottom: 1rem;"><i class="fas fa-check-circle" style="color: var(--gold); margin-top: 4px;"></i><span>Collector vehicle valuation support</span></li>
+    <div class="feature-split-layout">
+      <div>
+        <span class="badge badge-blue" style="margin-bottom:0.75rem;"><i class="fas fa-globe"></i> International Compliance</span>
+        <h2 style="font-size:2.4rem; margin-bottom:1rem;">Imported Vehicle Inspection & Homologation</h2>
+        <div class="brand-divider" style="margin: 0.75rem 0 1.5rem;"></div>
+        <p style="color:var(--text-secondary); margin-bottom:1.5rem; font-size:1.05rem;">
+          Importing a vehicle from Europe, Japan, Canada, or overseas? Apex Inspect provides certified technical inspections to satisfy FMVSS, EPA Clean Air, and state DMV registration requirements.
+        </p>
+        <ul style="list-style:none; margin-bottom:2rem;">
+          <li style="display:flex; gap:12px; margin-bottom:0.8rem; align-items:center;">
+            <i class="fas fa-check-circle" style="color:var(--brand-emerald);"></i>
+            <span>Federal Motor Vehicle Safety Standards (FMVSS) compliance verification</span>
+          </li>
+          <li style="display:flex; gap:12px; margin-bottom:0.8rem; align-items:center;">
+            <i class="fas fa-check-circle" style="color:var(--brand-emerald);"></i>
+            <span>EPA & DOT import documentation review & emissions verification</span>
+          </li>
+          <li style="display:flex; gap:12px; margin-bottom:0.8rem; align-items:center;">
+            <i class="fas fa-check-circle" style="color:var(--brand-emerald);"></i>
+            <span>Foreign VIN plate conversion & odometer validation</span>
+          </li>
+          <li style="display:flex; gap:12px; margin-bottom:0.8rem; align-items:center;">
+            <i class="fas fa-check-circle" style="color:var(--brand-emerald);"></i>
+            <span>State titling and customs compliance documentation</span>
+          </li>
         </ul>
-        <a href="#" class="btn-gold service-learn-more" data-service="antique">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="feature-split-media">
-        <i class="fas fa-history"></i>
-        <h3>Timeless Care</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Our technicians understand the unique needs of vintage vehicles. We treat every classic with the respect it deserves.</p>
-        <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
-          <p class="gold-text" style="font-weight: 700;">Starting at $69.99</p>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Includes historic documentation</p>
+        <div style="display:flex; gap:1rem; align-items:center;">
+          <a href="#" class="btn-primary service-learn-more" data-service="imported">View Import Requirements <i class="fas fa-arrow-right"></i></a>
+          <span style="font-weight:700; color:var(--brand-blue); font-size:1.1rem;">Starting at $89.99</span>
         </div>
       </div>
+      <div>
+        <img src="images/service-imported.jpg" alt="Imported Vehicle Safety Inspection" class="feature-split-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTY SECTION 9: ANTIQUE & CLASSIC VEHICLES -->
+<section id="antique" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="feature-split-layout" style="direction:rtl;">
+      <div style="direction:ltr;">
+        <span class="badge badge-blue" style="margin-bottom:0.75rem;"><i class="fas fa-clock-rotate-left"></i> Historic Preservation</span>
+        <h2 style="font-size:2.4rem; margin-bottom:1rem;">Antique & Classic Vehicle Inspections</h2>
+        <div class="brand-divider" style="margin: 0.75rem 0 1.5rem;"></div>
+        <p style="color:var(--text-secondary); margin-bottom:1.5rem; font-size:1.05rem;">
+          Vehicles 25 years and older require specialized care that respects original period components while ensuring safe highway operation and qualifying for historic registration plates.
+        </p>
+        <ul style="list-style:none; margin-bottom:2rem;">
+          <li style="display:flex; gap:12px; margin-bottom:0.8rem; align-items:center;">
+            <i class="fas fa-check-circle" style="color:var(--brand-emerald);"></i>
+            <span>Age-appropriate safety standards evaluation (drum brakes, vintage lighting)</span>
+          </li>
+          <li style="display:flex; gap:12px; margin-bottom:0.8rem; align-items:center;">
+            <i class="fas fa-check-circle" style="color:var(--brand-emerald);"></i>
+            <span>Emissions exemption filing for qualifying classic model years</span>
+          </li>
+          <li style="display:flex; gap:12px; margin-bottom:0.8rem; align-items:center;">
+            <i class="fas fa-check-circle" style="color:var(--brand-emerald);"></i>
+            <span>Official state Historic / Antique plate documentation</span>
+          </li>
+          <li style="display:flex; gap:12px; margin-bottom:0.8rem; align-items:center;">
+            <i class="fas fa-check-circle" style="color:var(--brand-emerald);"></i>
+            <span>Collector vehicle valuation and condition audit report</span>
+          </li>
+        </ul>
+        <div style="display:flex; gap:1rem; align-items:center;">
+          <a href="#" class="btn-primary service-learn-more" data-service="antique">View Classic Standards <i class="fas fa-arrow-right"></i></a>
+          <span style="font-weight:700; color:var(--brand-blue); font-size:1.1rem;">Starting at $69.99</span>
+        </div>
+      </div>
+      <div style="direction:ltr;">
+        <img src="images/service-antique.jpg" alt="Antique and Classic Vehicle Inspection" class="feature-split-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section style="background:linear-gradient(135deg, #070D1E 0%, #0F172A 60%, #1D4ED8 100%); color:#FFFFFF; text-align:center; padding:80px 0; border-bottom:none;">
+  <div class="container">
+    <h2 style="font-size:2.6rem; color:#FFFFFF; margin-bottom:1rem;">Need A Custom Or Multi-Vehicle Inspection?</h2>
+    <p style="color:#CBD5E1; font-size:1.15rem; max-width:650px; margin:0 auto 2.2rem;">
+      Whether you operate a fleet of 50 delivery vans or require inspection on an imported specialty car, our state-licensed master technicians are ready.
+    </p>
+    <div style="display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap;">
+      <a href="contact.html" class="btn-primary" style="background:#FFFFFF; color:var(--brand-navy) !important; border-color:#FFFFFF; font-weight:700;">
+        <i class="fas fa-calendar-check"></i> Book Fast Track Inspection
+      </a>
+      <a href="tel:+919876543210" class="btn-outline" style="border-color:rgba(255,255,255,0.4); color:#FFFFFF !important;">
+        <i class="fas fa-phone"></i> Call Station: (555) 123-4567
+      </a>
     </div>
   </div>
 </section>
@@ -979,233 +1129,290 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <a href="#" class="footer-logo"><span>Apex Inspect</span></a>
-        <p style="margin-top: 0.5rem;">Official state vehicle inspections & emissions testing. Fast, certified, and reliable service you can trust.</p>
+        <a href="index.html" class="brand-logo" style="margin-bottom: 1.2rem; display: inline-block; color: #FFFFFF !important;"><span>Apex Inspect</span></a>
+        <p>
+          Official State Department of Transportation & EPA Certified Vehicle Inspection & Emissions Center. Fast drive-thru testing with zero mechanic upselling.
+        </p>
         <div class="social-icons" style="margin-top: 1.5rem;">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
+
       <div class="footer-col">
-        <h4>Explore</h4>
-        <a href="#services-grid">Services</a>
-        <a href="#imported">Imported Vehicles</a>
-        <a href="#antique">Antique Vehicles</a>
-        <a href="#locations">Locations</a>
-        <a href="#faq">FAQ</a>
+        <h4>Inspection Services</h4>
+        <a href="services.html">12-Point Safety Inspection</a>
+        <a href="emissions.html">OBD-II Emissions Testing</a>
+        <a href="services.html">Tailpipe Smog Analysis</a>
+        <a href="services.html">Official VIN Verification</a>
+        <a href="services.html">Heavy Diesel Opacity</a>
+        <a href="services.html">Commercial Fleet Program</a>
       </div>
+
       <div class="footer-col">
-        <h4>Support</h4>
-        <a href="#">Inspection FAQ</a>
-        <a href="#">Book Appointment</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
+        <h4>Quick Resources</h4>
+        <a href="faq.html">State Requirements FAQ</a>
+        <a href="locations.html">Drive-Thru Lane Wait Times</a>
+        <a href="emissions.html">Free 30-Day Retest Policy</a>
+        <a href="contact.html">Schedule Fleet Inspection</a>
+        <a href="admin.html">DMV Station Compliance Portal</a>
+        <a href="user.html">Vendor Partner Dashboard</a>
       </div>
+
       <div class="footer-col">
-        <h4>Visit Station</h4>
+        <h4>Station Headquarters</h4>
         <div class="footer-contact-item">
-          <i class="fas fa-map-marker-alt"></i>
+          <i class="fas fa-location-dot"></i>
           <span>Suite 45, Creators Block, Mumbai, India</span>
         </div>
         <div class="footer-contact-item">
           <i class="fas fa-phone"></i>
-          <a href="tel:+919876543210">+91 98765 43210</a>
+          <a href="tel:+919876543210" style="margin-bottom:0;">+91 98765 43210</a>
         </div>
         <div class="footer-contact-item">
           <i class="fas fa-envelope"></i>
-          <a href="mailto:hello@apexinspect.com">hello@apexinspect.com</a>
+          <a href="mailto:inspections@apexinspect.com" style="margin-bottom:0;">inspections@apexinspect.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Mon-Fri: 7am-7pm | Sat: 8am-5pm</span>
         </div>
       </div>
     </div>
+
     <div class="footer-copyright">
-      <p>© 2026 Apex Inspect. All rights reserved.</p>
+      <p>© 2026 Apex Inspect Testing Stations. Official State Licensed Facility. All rights reserved.</p>
       <div>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+        <a href="#" style="color:var(--footer-text-muted); text-decoration:none; margin-right:1rem;">Privacy Policy</a>
+        <a href="#" style="color:var(--footer-text-muted); text-decoration:none; margin-right:1rem;">Terms of Service</a>
+        <a href="#" style="color:var(--footer-text-muted); text-decoration:none;">DMV Compliance Standards</a>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- DYNAMIC SERVICE DETAIL OVERLAY -->
+<!-- DYNAMIC SERVICE DETAIL MODAL OVERLAY -->
 <div id="serviceDetailOverlay" class="service-detail-overlay">
   <div class="service-detail-card">
     <button class="service-detail-close" id="closeDetailOverlay">&times;</button>
-    <div id="serviceDetailContent">
-      <!-- dynamically filled -->
+    <img id="modalHeaderImg" src="images/service-safety.jpg" alt="Service Detail" class="service-detail-header-img">
+    <div class="service-detail-inner" id="serviceDetailContent">
+      <!-- Injected via JavaScript -->
     </div>
   </div>
 </div>
 
 <script>
-  // ================== SERVICE DETAILS DATA ==================
+  // Service Details Data with Image References
   const serviceData = {
     safety: {
-      title: 'Safety Inspection',
+      title: 'State Safety Inspection',
       icon: 'fas fa-shield-alt',
-      description: 'Our state-certified safety inspection covers all critical vehicle systems to ensure you meet legal requirements and drive safely.',
+      image: 'images/service-safety.jpg',
+      badge: 'State Mandatory',
+      description: 'Our state-certified safety inspection verifies all critical vehicle systems to ensure full highway legal compliance and driver safety.',
       details: [
-        'Brake system – pads, rotors, lines, and fluid',
-        'Lighting – headlights, taillights, turn signals, brake lights',
-        'Tires & wheels – tread depth, pressure, and condition',
-        'Steering & suspension – tie rods, ball joints, shocks',
-        'Windshield & wipers – cracks, chips, and functionality',
-        'Horn, mirrors, seat belts, and safety equipment'
+        'Brake system evaluation – friction pads, rotors, hydraulic lines, fluid boiling point',
+        'Headlight aiming, high/low beam output, tail lamps, turn indicators, reverse lights',
+        'Tire tread depth check (minimum 2/32" legal requirement) and sidewall integrity',
+        'Steering linkage, rack & pinion, tie rods, ball joints, and power steering fluid',
+        'Windshield integrity (chips outside critical driver sweep) and wiper condition',
+        'Seat belts, safety buckles, horn audible output, and rear/side mirrors'
       ],
-      price: 'Starting at $39.99',
-      cta: 'Schedule Safety Inspection'
+      price: '$39.99 (State Filing Included)',
+      turnaround: '10–15 Minutes Turnaround',
+      cta: 'Book Safety Inspection'
     },
     emissions: {
-      title: 'Emissions Testing',
+      title: 'State Emissions & Smog Testing',
       icon: 'fas fa-leaf',
-      description: 'Fast, accurate emissions testing using state-of-the-art equipment. We electronically report results to the DMV for you.',
+      image: 'images/service-emissions.jpg',
+      badge: 'EPA & DMV Approved',
+      description: 'Fast, certified emissions testing using state-of-the-art OBD-II telemetry and 5-gas tailpipe analysis. Instant electronic reporting directly to the state DMV.',
       details: [
-        'OBD-II scan for 1996 and newer vehicles',
-        'Tailpipe testing for older model years',
-        'Evaporative system check',
-        'Catalytic converter & oxygen sensor diagnostics',
-        'Immediate pass/fail results',
-        'Free retest within 30 days if needed'
+        'OBD-II telemetry scan for 1996 and newer gasoline and hybrid vehicles',
+        'Five-gas tailpipe analyzer for older model years (CO, HC, CO2, O2, NOx)',
+        'Evaporative emissions gas cap pressure decay test',
+        'Catalytic converter thermal efficiency and oxygen sensor diagnostics',
+        'Instant pass/fail state certificate printout & DMV digital transmission',
+        '100% Free retest within 30 days if repairs are required'
       ],
-      price: 'Starting at $29.99',
+      price: '$29.99 (Electronic DMV Sync Included)',
+      turnaround: '8–10 Minutes Turnaround',
       cta: 'Book Emissions Test'
     },
     vin: {
-      title: 'VIN Verification',
+      title: 'Official VIN Verification',
       icon: 'fas fa-clipboard-check',
-      description: 'Official VIN verification for out-of-state vehicles, title transfers, and DMV requirements. Certified and accepted statewide.',
+      image: 'images/service-vin.jpg',
+      badge: 'DMV Authorized',
+      description: 'Official physical Vehicle Identification Number inspection for out-of-state vehicle registrations, title transfers, and state DMV requirements.',
       details: [
-        'Physical inspection of VIN plate and stickers',
-        'Mileage verification',
-        'Title and registration document review',
-        'Electronic submission to DMV where available',
-        'Same-day paperwork for most vehicles',
-        'Accepted for all DMV VIN verification needs'
+        'Physical verification of chassis VIN plate, dashboard tag, and federal door jamb stickers',
+        'Certified odometer mileage audit and anti-tampering verification',
+        'Title, bill of sale, and DMV Form 501 document authentication',
+        'Direct electronic submission to DMV databases where state applicable',
+        'Same-day completed official state paperwork with embossed inspection stamp',
+        'Accepted statewide at all DMV branches and county titling offices'
       ],
-      price: 'Starting at $25.00',
+      price: '$25.00 Flat Rate',
+      turnaround: '5 Minutes Turnaround',
       cta: 'Get VIN Verified'
     },
     diesel: {
-      title: 'Diesel Emissions',
+      title: 'Diesel Emissions & Opacity Testing',
       icon: 'fas fa-truck',
-      description: 'Heavy-duty diesel testing with opacity meters and OBD checks. Compliant with state and federal regulations for commercial vehicles.',
+      image: 'images/service-diesel.jpg',
+      badge: 'Commercial Grade',
+      description: 'Heavy-duty diesel testing using calibrated smoke opacity meters and heavy chassis dynamometers. Fully compliant with DOT regulations.',
       details: [
-        'Opacity meter testing for diesel engines',
-        'OBD-II diagnostics for 1996+ diesel vehicles',
-        'Visual smoke inspection',
-        'Annual and biennial testing available',
-        'Fleet reporting and documentation',
-        'Priority scheduling for commercial fleets'
+        'Full snap-acceleration smoke opacity meter testing',
+        'OBD-II diagnostics for 1996+ light and medium diesel trucks',
+        'Visual exhaust particulate and DPF system inspection',
+        'Annual and biennial commercial vehicle certification',
+        'Consolidated fleet compliance reporting',
+        'Dedicated high-clearance commercial drive-thru bays'
       ],
-      price: 'Starting at $49.99',
+      price: '$49.99 Flat Rate',
+      turnaround: '15–20 Minutes Turnaround',
       cta: 'Schedule Diesel Test'
     },
     fleet: {
-      title: 'Fleet & Commercial',
+      title: 'Fleet & Commercial Vehicle Program',
       icon: 'fas fa-building',
-      description: 'Volume discounts and priority scheduling for business fleets and commercial vehicles. Dedicated account management.',
+      image: 'images/service-fleet.jpg',
+      badge: 'Volume Discount',
+      description: 'Priority lanes, consolidated corporate billing, and real-time fleet compliance management for companies with 5 to 500+ vehicles.',
       details: [
-        'Volume discounts for 5+ vehicles',
-        'Dedicated account manager',
-        'Priority scheduling – skip the line',
-        'Consolidated monthly reporting',
-        'On-site inspections for large fleets (upon request)',
-        'Compliance management for DOT and state regulations'
+        'Volume discounts for fleets of 5 or more vehicles',
+        'Dedicated corporate fleet account manager',
+        'Express lane VIP bypass – no waiting in line for drivers',
+        'Consolidated monthly itemized invoicing and digital certificates',
+        'On-site mobile testing options for large fleet lots',
+        'Automated upcoming inspection expiration alerts'
       ],
-      price: 'Custom pricing – contact us',
-      cta: 'Request Fleet Quote'
+      price: 'Custom Volume Pricing Available',
+      turnaround: 'Priority Queue Status',
+      cta: 'Request Corporate Fleet Quote'
     },
     motorcycle: {
-      title: 'Motorcycle Inspection',
+      title: 'Motorcycle & Moped Inspection',
       icon: 'fas fa-motorcycle',
-      description: 'Specialized safety and emissions testing for motorcycles, scooters, and mopeds. Quick and rider-friendly.',
+      image: 'images/service-motorcycle.jpg',
+      badge: 'Two-Wheel Certified',
+      description: 'Specialized safety and exhaust checks for street motorcycles, vintage cruisers, sportbikes, scooters, and mopeds.',
       details: [
-        'Brake and tire inspection',
-        'Lighting and electrical check',
-        'Exhaust and noise level testing (where applicable)',
-        'Frame and suspension inspection',
-        'VIN verification available',
-        'Fast turnaround – typically under 15 minutes'
+        'Front and rear brake pad wear and hydraulic lever travel',
+        'High/low beam alignment, tail light, turn signals, and horn',
+        'Tire tread depth, pressure, and chain/belt tension',
+        'Exhaust sound decibel and emissions testing where mandated',
+        'Frame, fork alignment, and steering head bearing check',
+        'Expedited drive-thru motorcycle ramp bay'
       ],
-      price: 'Starting at $19.99',
-      cta: 'Book Motorcycle Inspection'
+      price: '$19.99 Flat Rate',
+      turnaround: '10 Minutes Turnaround',
+      cta: 'Book Motorcycle Test'
     },
     rv: {
-      title: 'RV & Trailer Inspection',
+      title: 'RV & Travel Trailer Inspection',
       icon: 'fas fa-caravan',
-      description: 'Comprehensive safety inspections for recreational vehicles, travel trailers, and towable units. Meets all state requirements.',
+      image: 'images/service-rv.jpg',
+      badge: 'Towable & Motorhome',
+      description: 'Comprehensive safety inspections for motorized RVs, travel trailers, 5th wheels, and towable campers to meet highway safety laws.',
       details: [
-        'Brake system inspection (including trailer brakes)',
-        'Hitch and coupling verification',
-        'Tire and wheel bearing check',
-        'Lighting and electrical systems',
-        'Propane and water system visual check',
-        'Weight and load distribution review'
+        'Electric and hydraulic trailer brake breakaway switch verification',
+        'Hitch, kingpin, safety chains, and coupler integrity check',
+        'Tire load rating, tread depth, and wheel bearing temperature check',
+        'Marker lights, tail lamps, brake light synchronization',
+        'Chassis suspension and axle alignment evaluation',
+        'Official state trailer roadworthy certificate'
       ],
-      price: 'Starting at $59.99',
+      price: '$59.99 Flat Rate',
+      turnaround: '25 Minutes Turnaround',
       cta: 'Book RV Inspection'
     },
     imported: {
       title: 'Imported Vehicle Inspection',
       icon: 'fas fa-globe',
-      description: 'Specialized inspections for vehicles brought in from other countries. We handle FMVSS, EPA, and DOT compliance so you can register your imported vehicle legally.',
+      image: 'images/service-imported.jpg',
+      badge: 'Federal Compliance',
+      description: 'Specialized inspections for foreign vehicles brought in from Europe, Japan, or overseas to verify FMVSS, EPA, and DOT road legal status.',
       details: [
-        'FMVSS compliance verification',
-        'EPA and DOT documentation review',
-        'VIN plate and odometer verification',
-        'State registration paperwork assistance',
-        'Customs documentation review',
-        'Compliance modification recommendations'
+        'Federal Motor Vehicle Safety Standards (FMVSS) compliance verification',
+        'EPA Clean Air and DOT customs documentation review',
+        'Foreign VIN plate and odometer conversion verification',
+        'Lighting and side marker lens compliance check',
+        'State title documentation and official inspection clearance report',
+        'Trusted assistance for vehicle import registration clearance'
       ],
-      price: 'Starting at $89.99',
-      cta: 'Book Imported Inspection'
+      price: '$89.99 (Includes Documentation Review)',
+      turnaround: '30 Minutes Turnaround',
+      cta: 'Book Imported Vehicle Inspection'
     },
     antique: {
       title: 'Antique & Classic Vehicle Inspection',
       icon: 'fas fa-history',
-      description: 'Respectful inspections for vehicles 25+ years old. We preserve original components while ensuring safety and historic registration compliance.',
+      image: 'images/service-antique.jpg',
+      badge: 'Classic 25+ Years',
+      description: 'Careful, respectful inspections for historic vehicles 25+ years old, balancing passenger safety with preservation of original parts.',
       details: [
-        'Age-appropriate safety standards',
-        'Original equipment preservation review',
-        'Historic registration documentation',
-        'Collector vehicle valuation support',
-        'Emissions exemptions for qualifying vehicles',
-        'Expert care for vintage components'
+        'Age-appropriate safety standards (original drum brakes and lighting)',
+        'Original mechanical component preservation assessment',
+        'State Historic and Antique license plate documentation',
+        'Exhaust emissions exemption verification for qualifying model years',
+        'Collector car valuation and roadworthiness summary report',
+        'Performed by master technicians experienced with vintage mechanics'
       ],
-      price: 'Starting at $69.99',
-      cta: 'Book Antique Inspection'
+      price: '$69.99 Flat Rate',
+      turnaround: '20 Minutes Turnaround',
+      cta: 'Book Antique Vehicle Inspection'
     }
   };
 
-  // ================== OVERLAY LOGIC ==================
+  // Modal logic
   const overlay = document.getElementById('serviceDetailOverlay');
   const detailContent = document.getElementById('serviceDetailContent');
+  const modalHeaderImg = document.getElementById('modalHeaderImg');
   const closeBtn = document.getElementById('closeDetailOverlay');
 
   function openServiceDetail(serviceKey) {
     const data = serviceData[serviceKey];
     if (!data) return;
 
+    if (modalHeaderImg) {
+      modalHeaderImg.src = data.image;
+      modalHeaderImg.alt = data.title;
+    }
+
     let detailsHtml = '';
     data.details.forEach(item => {
-      detailsHtml += `<li><i class="fas fa-check-circle gold-text" style="margin-right: 8px;"></i>${item}</li>`;
+      detailsHtml += `<li style="display:flex; gap:10px; margin-bottom:0.7rem; align-items:flex-start; font-size:0.92rem;"><i class="fas fa-check-circle" style="color:var(--brand-emerald); margin-top:3px;"></i><span>${item}</span></li>`;
     });
 
     detailContent.innerHTML = `
-      <div class="service-detail-icon"><i class="${data.icon}"></i></div>
-      <h2>${data.title}</h2>
-      <div class="gold-divider" style="margin: 0.8rem 0 1.5rem;"></div>
-      <p>${data.description}</p>
-      <ul>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+        <span class="badge badge-blue"><i class="${data.icon}"></i> ${data.badge}</span>
+        <span style="font-size:0.82rem; font-weight:700; color:var(--brand-emerald);"><i class="fas fa-stopwatch"></i> ${data.turnaround}</span>
+      </div>
+      <h2 style="font-size:1.8rem; margin-bottom:0.5rem;">${data.title}</h2>
+      <div class="brand-divider" style="margin: 0.5rem 0 1.2rem;"></div>
+      <p style="color:var(--text-secondary); margin-bottom:1.5rem; font-size:0.95rem; line-height:1.6;">${data.description}</p>
+      
+      <h4 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text-primary);">What This Inspection Covers:</h4>
+      <ul style="list-style:none; margin-bottom:1.8rem; padding:0;">
         ${detailsHtml}
       </ul>
-      <p style="font-weight: 700; color: var(--gold); font-size: 1.2rem; margin-top: 1.5rem;">${data.price}</p>
-      <div class="detail-cta">
-        <a href="contact.html" class="btn-gold" style="margin-top: 0.5rem;">${data.cta} <i class="fas fa-arrow-right"></i></a>
-        <a href="contact.html" class="btn-outline-gold" style="margin-top: 0.5rem;">Contact Us</a>
+      
+      <div style="background:var(--bg-secondary); padding:1rem 1.25rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <div style="font-size:0.78rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Transparent State Fee</div>
+          <div style="font-size:1.3rem; font-weight:800; color:var(--brand-blue);">${data.price}</div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <a href="contact.html" class="btn-primary" style="padding:0.65rem 1.3rem; font-size:0.88rem;">${data.cta} <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
     `;
 
@@ -1218,7 +1425,6 @@
     document.body.style.overflow = '';
   }
 
-  // Attach click events to all "Learn More" buttons
   document.querySelectorAll('.service-learn-more').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -1227,25 +1433,26 @@
     });
   });
 
-  closeBtn.addEventListener('click', closeServiceDetail);
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeServiceDetail();
-  });
+  if (closeBtn) closeBtn.addEventListener('click', closeServiceDetail);
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeServiceDetail();
+    });
+  }
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && overlay.classList.contains('active')) {
       closeServiceDetail();
     }
   });
 
-  // ================== BASE SITE SCRIPTS ==================
-  // Dark Mode Toggle
+  // Base Site Scripts: Dark Mode & RTL
   const themeToggle = document.getElementById('theme-toggle');
   const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
   const body = document.body;
   
   function updateThemeIcon(isDark) {
     if (themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    if (mobileThemeToggle) mobileThemeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> Theme' : '<i class="fas fa-moon"></i> Theme';
+    if (mobileThemeToggle) mobileThemeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> Light' : '<i class="fas fa-moon"></i> Dark';
   }
   
   function toggleTheme() {
@@ -1275,7 +1482,6 @@
   if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
   if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
   
-  // RTL Toggle
   const rtlToggle = document.getElementById('rtl-toggle');
   const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
   const htmlElement = document.documentElement;
@@ -1295,84 +1501,40 @@
   
   const savedDirection = localStorage.getItem('direction');
   if (savedDirection === 'rtl') htmlElement.setAttribute('dir', 'rtl');
-  
-  // Mobile Menu Toggle
+
+  // Mobile Menu
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobilePanel = document.getElementById('mobile-menu-panel');
-  
-  function toggleMobileMenu() {
-    mobilePanel.classList.toggle('show');
-    mobileMenuBtn.classList.toggle('active');
-    document.body.style.overflow = mobilePanel.classList.contains('show') ? 'hidden' : '';
-  }
-  
   if (mobileMenuBtn && mobilePanel) {
-    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-    
-    document.querySelectorAll('.mobile-nav-link, .mobile-login-btn').forEach(link => {
-      link.addEventListener('click', () => {
-        if (mobilePanel.classList.contains('show')) toggleMobileMenu();
-      });
+    mobileMenuBtn.addEventListener('click', () => {
+      mobilePanel.classList.toggle('show');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (mobilePanel.classList.contains('show')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      }
     });
   }
-  
-  // Mobile Dropdown Toggle
+
+  // Mobile Dropdown
   document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
     btn.addEventListener('click', function () {
       const submenu = this.nextElementSibling;
       const icon = this.querySelector('.mobile-dropdown-icon');
-
       document.querySelectorAll('.mobile-submenu').forEach(menu => {
         if (menu !== submenu) menu.classList.remove('show');
       });
-
       document.querySelectorAll('.mobile-dropdown-icon').forEach(i => {
-        if (i !== icon) i.classList.remove('rotated');
+        if (i !== icon) i.style.transform = 'rotate(0deg)';
       });
-
       submenu.classList.toggle('show');
-      icon.classList.toggle('rotated');
+      if (icon) icon.style.transform = submenu.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
     });
-  });
-  
-  // FAQ Accordion
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const ans = btn.nextElementSibling;
-      ans.classList.toggle('open');
-      const icon = btn.querySelector('.fa-chevron-down');
-      if (icon) icon.style.transform = ans.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
-    });
-  });
-  
-  // Smooth Scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === "#" || targetId === "") return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if (mobilePanel && mobilePanel.classList.contains('show')) toggleMobileMenu();
-      }
-    });
-  });
-  
-  // Close mobile menu on resize
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 1180 && mobilePanel && mobilePanel.classList.contains('show')) {
-      toggleMobileMenu();
-    }
-  });
-  
-  // Active Nav Highlight
-  const currentPage = window.location.pathname.split("/").pop();
-  document.querySelectorAll('a').forEach(link => {
-    const linkPage = link.getAttribute('href');
-    if (linkPage === currentPage) {
-      link.classList.add('active');
-    }
   });
 </script>
 </body>

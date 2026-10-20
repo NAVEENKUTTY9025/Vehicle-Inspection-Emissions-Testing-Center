@@ -15,29 +15,29 @@
       --color-background: #FFFFFF;
       --color-primary-text: #1a1a1a;
       --color-secondary-text: #4a4a4a;
-      --color-accent: #16A34A;
-      --color-accent-light: #22C55E;
+      --color-accent: #1D4ED8;
+      --color-accent-light: #3B82F6;
       --color-border: #E5E5E5;
-      --color-hover: #F0FDF4;
+      --color-hover: #F8FAFC;
       --color-card-bg: #FFFFFF;
       --color-sidebar-bg: #F8F8F4;
-      --color-success: #16A34A;
-      --color-warning: #F59E0B;
-      --color-danger: #DC2626;
+      --color-success: #1D4ED8;
+      --color-warning: #3B82F6;
+      --color-danger: #0F172A;
     }
     html[data-theme='dark'] {
       --color-background: #0D0D0D;
       --color-primary-text: #FFFFFF;
       --color-secondary-text: #cccccc;
-      --color-accent: #16A34A;
-      --color-accent-light: #22C55E;
+      --color-accent: #1D4ED8;
+      --color-accent-light: #3B82F6;
       --color-border: #2a2a2a;
-      --color-hover: #0F2A18;
+      --color-hover: #0F172A;
       --color-card-bg: #141414;
       --color-sidebar-bg: #0a0a0a;
-      --color-success: #22C55E;
-      --color-warning: #F59E0B;
-      --color-danger: #EF4444;
+      --color-success: #3B82F6;
+      --color-warning: #3B82F6;
+      --color-danger: #1D4ED8;
     }
     body {
       background-color: var(--color-background);
@@ -63,11 +63,11 @@
       border: 1px solid var(--color-border);
       border-radius: 1.5rem;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px -8px rgba(22,163,74,0.08);
+      box-shadow: 0 8px 20px -8px rgba(29,78,216,0.08);
     }
     .dashboard-card:hover {
       border-color: var(--color-accent);
-      box-shadow: 0 12px 28px -12px rgba(22,163,74,0.2);
+      box-shadow: 0 12px 28px -12px rgba(29,78,216,0.2);
     }
 
     /* sidebar */
@@ -84,19 +84,19 @@
       cursor: pointer;
     }
     .sidebar-link:hover, .sidebar-link.active {
-      background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
+      background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
       color: white;
     }
     .sidebar-link:hover svg, .sidebar-link.active svg { stroke: white; color: white; }
 
-    .badge-success { background: rgba(22,163,74,0.12); color: #16A34A; font-weight: 600; }
-    .badge-warning { background: rgba(245,158,11,0.15); color: #B45309; font-weight: 600; }
-    .badge-danger { background: rgba(220,38,38,0.12); color: #DC2626; font-weight: 600; }
-    .badge-info { background: rgba(22,163,74,0.15); color: #16A34A; font-weight: 600; }
-    html[data-theme='dark'] .badge-success { color: #22C55E; background: rgba(34,197,94,0.15); }
-    html[data-theme='dark'] .badge-warning { color: #F59E0B; }
-    html[data-theme='dark'] .badge-danger { color: #EF4444; }
-    html[data-theme='dark'] .badge-info { color: #22C55E; background: rgba(34,197,94,0.15); }
+    .badge-success { background: rgba(29,78,216,0.12); color: #1D4ED8; font-weight: 600; }
+    .badge-warning { background: rgba(29,78,216,0.15); color: #1D4ED8; font-weight: 600; }
+    .badge-danger { background: rgba(29,78,216,0.12); color: #0F172A; font-weight: 600; }
+    .badge-info { background: rgba(29,78,216,0.15); color: #1D4ED8; font-weight: 600; }
+    html[data-theme='dark'] .badge-success { color: #3B82F6; background: rgba(29,78,216,0.15); }
+    html[data-theme='dark'] .badge-warning { color: #3B82F6; }
+    html[data-theme='dark'] .badge-danger { color: #1D4ED8; }
+    html[data-theme='dark'] .badge-info { color: #3B82F6; background: rgba(29,78,216,0.15); }
 
     .logout-btn {
       background-color: var(--color-danger) !important;
@@ -104,18 +104,18 @@
       border: none !important;
       justify-content: center;
       margin-top: 1rem !important;
-      box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
+      box-shadow: 0 4px 10px rgba(29,78,216,0.2);
     }
     .logout-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(220, 38, 38, 0.3);
+      box-shadow: 0 6px 14px rgba(29,78,216,0.3);
     }
     .logout-btn svg { stroke: white !important; }
     .bg-apex-gradient {
-      background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
+      background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
     }
     .btn-accent {
-      background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
+      background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
       color: white;
       transition: all 0.3s ease;
       font-weight: 600;
@@ -123,7 +123,7 @@
     .btn-accent:hover {
       opacity: 0.9;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(22,163,74,0.3);
+      box-shadow: 0 4px 12px rgba(29,78,216,0.3);
     }
 
     #mobile-overlay {
@@ -141,19 +141,35 @@
     html[dir="rtl"] .sidebar-link { flex-direction: row-reverse; }
     html[dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
 
-    .logo-apex {
-      font-size: 1.8rem !important;
+    .brand-logo, .logo-apex {
+      font-family: 'Merriweather', serif !important;
+      font-size: 1.75rem !important;
       font-weight: 700 !important;
-      color: var(--color-primary-text);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-      display: inline-block;
-      line-height: 1;
+      color: var(--color-primary-text) !important;
+      text-decoration: none !important;
+      letter-spacing: -0.5px !important;
+      line-height: 1 !important;
+      display: inline-block !important;
+      transition: color 0.2s ease;
+      white-space: nowrap;
     }
-    .logo-apex span {
-      color: var(--color-accent);
-      font-style: italic;
-      font-family: 'Merriweather', serif;
+    @media (max-width: 640px) {
+      .brand-logo, .logo-apex {
+        font-size: 1.35rem !important;
+      }
+    }
+    @media (max-width: 380px) {
+      .brand-logo, .logo-apex {
+        font-size: 1.18rem !important;
+      }
+    }
+    .brand-logo span, .logo-apex span {
+      color: var(--color-accent) !important;
+      font-style: italic !important;
+      font-family: 'Merriweather', serif !important;
+    }
+    .brand-logo:hover, .logo-apex:hover {
+      color: var(--color-accent) !important;
     }
 
     /* Notification dot */
@@ -163,7 +179,7 @@
       right: 6px;
       width: 8px;
       height: 8px;
-      background: #DC2626;
+      background: #0F172A;
       border-radius: 50%;
       border: 2px solid var(--color-background);
     }
@@ -177,7 +193,7 @@
     }
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #16A34A 0%, #22C55E 100%);
+      background: linear-gradient(90deg, #1D4ED8 0%, #3B82F6 100%);
       border-radius: 3px;
       transition: width 0.5s ease;
     }
@@ -194,39 +210,39 @@
 
   <!-- TOP NAV (Apex Inspect Admin) -->
   <header class="fixed top-0 inset-x-0 z-50 bg-background border-b border-border h-[73px]">
-    <div class="px-3 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-      <div class="flex items-center gap-2 sm:gap-4">
-        <button id="mobile-menu-toggle" class="lg:hidden p-1.5 sm:p-2 rounded-xl hover:bg-hover transition">
+    <div class="px-3 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2 sm:gap-4 shrink-0 min-w-0">
+        <button id="mobile-menu-toggle" class="lg:hidden p-2 rounded-xl hover:bg-hover transition shrink-0" aria-label="Toggle Menu">
           <svg class="w-6 h-6 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        <a href="index.html" class="logo-apex">
+        <a href="index.html" class="brand-logo logo-apex shrink-0">
           <span>Apex Inspect</span>
         </a>
-        <span class="hidden lg:inline-block bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ml-2">Admin</span>
+        <span class="hidden md:inline-block bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ml-1 shrink-0">Admin</span>
       </div>
 
-      <div class="flex items-center gap-1 sm:gap-4">
-        <div class="hidden sm:flex items-center gap-2 bg-hover px-4 py-2 rounded-xl">
-          <span class="w-2 h-2 bg-emerald-600 rounded-full"></span>
-          <span class="text-sm font-medium text-primary-text">System Online</span>
+      <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+        <div class="hidden xl:flex items-center gap-2 bg-hover px-3.5 py-1.5 rounded-xl shrink-0">
+          <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
+          <span class="text-xs font-medium text-primary-text">System Online</span>
         </div>
 
-        <button class="relative p-1.5 sm:p-2 rounded-full hover:bg-hover transition">
+        <button class="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-hover transition shrink-0" title="Notifications" aria-label="Notifications">
           <svg class="w-5 h-5 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
           </svg>
           <span class="notif-dot"></span>
         </button>
 
-        <button id="lang-toggle" class="p-1.5 sm:p-2 rounded-full hover:bg-hover transition">
+        <button id="lang-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-hover transition shrink-0" title="Toggle RTL" aria-label="Toggle language orientation">
           <svg class="w-5 h-5 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
           </svg>
         </button>
 
-        <button id="theme-toggle" class="p-1.5 sm:p-2 rounded-full hover:bg-hover transition">
+        <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-hover transition shrink-0" title="Toggle Theme" aria-label="Toggle light/dark theme">
           <svg class="w-5 h-5 light-icon text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
@@ -235,9 +251,9 @@
           </svg>
         </button>
 
-        <div class="flex items-center gap-2 pl-2 sm:pl-3 border-l border-border ml-1 sm:ml-0">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-apex-gradient flex items-center justify-center text-white font-bold text-sm sm:text-base">AD</div>
-          <div class="hidden sm:block">
+        <div class="flex items-center gap-2 pl-2 sm:pl-3 border-l border-border ml-0.5 sm:ml-1 shrink-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-apex-gradient flex items-center justify-center text-white font-bold text-xs sm:text-sm shrink-0">AD</div>
+          <div class="hidden lg:block leading-tight">
             <p class="text-sm font-medium">Admin User</p>
             <p class="text-xs text-secondary-text">Super Admin</p>
           </div>
@@ -361,7 +377,7 @@
               <div>
                 <p class="text-secondary-text text-sm">Total Inspections</p>
                 <p class="text-3xl font-black mt-1">1,284</p>
-                <p class="text-xs text-emerald-600 mt-2">↑ 12% from last month</p>
+                <p class="text-xs text-blue-600 mt-2">↑ 12% from last month</p>
               </div>
               <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
                 <i class="fa-solid fa-shield-halved text-2xl"></i>
@@ -373,7 +389,7 @@
               <div>
                 <p class="text-secondary-text text-sm">Active Vendors</p>
                 <p class="text-3xl font-black mt-1">24</p>
-                <p class="text-xs text-emerald-600 mt-2">2 new this week</p>
+                <p class="text-xs text-blue-600 mt-2">2 new this week</p>
               </div>
               <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
                 <i class="fa-solid fa-users text-2xl"></i>
@@ -385,7 +401,7 @@
               <div>
                 <p class="text-secondary-text text-sm">Stations Online</p>
                 <p class="text-3xl font-black mt-1">8 / 8</p>
-                <p class="text-xs text-emerald-600 mt-2">100% uptime today</p>
+                <p class="text-xs text-blue-600 mt-2">100% uptime today</p>
               </div>
               <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
                 <i class="fa-solid fa-location-dot text-2xl"></i>
@@ -397,7 +413,7 @@
               <div>
                 <p class="text-secondary-text text-sm">Revenue (MTD)</p>
                 <p class="text-3xl font-black mt-1">$48.2K</p>
-                <p class="text-xs text-emerald-600 mt-2">↑ 8.3% vs target</p>
+                <p class="text-xs text-blue-600 mt-2">↑ 8.3% vs target</p>
               </div>
               <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
                 <i class="fa-solid fa-chart-line text-2xl"></i>
@@ -433,28 +449,28 @@
             <div class="mt-4 space-y-2 text-sm">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="w-3 h-3 rounded-full" style="background:#16A34A;"></span>
+                  <span class="w-3 h-3 rounded-full" style="background:#1D4ED8;"></span>
                   <span class="text-secondary-text">Safety</span>
                 </div>
                 <span class="font-bold">52%</span>
               </div>
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="w-3 h-3 rounded-full" style="background:#22C55E;"></span>
+                  <span class="w-3 h-3 rounded-full" style="background:#3B82F6;"></span>
                   <span class="text-secondary-text">Emissions</span>
                 </div>
                 <span class="font-bold">31%</span>
               </div>
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="w-3 h-3 rounded-full" style="background:#86EFAC;"></span>
+                  <span class="w-3 h-3 rounded-full" style="background:#93C5FD;"></span>
                   <span class="text-secondary-text">VIN</span>
                 </div>
                 <span class="font-bold">11%</span>
               </div>
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="w-3 h-3 rounded-full" style="background:#DCFCE7;"></span>
+                  <span class="w-3 h-3 rounded-full" style="background:#EFF6FF;"></span>
                   <span class="text-secondary-text">Specialty</span>
                 </div>
                 <span class="font-bold">6%</span>
@@ -534,7 +550,7 @@
                 </div>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-9 h-9 bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500 shrink-0">
+                <div class="w-9 h-9 bg-blue-600/10 rounded-full flex items-center justify-center text-blue-600 shrink-0">
                   <i class="fa-solid fa-triangle-exclamation text-sm"></i>
                 </div>
                 <div class="flex-1 min-w-0">
@@ -682,6 +698,19 @@
                 <p><i class="fa-solid fa-calendar text-accent mr-2"></i> Last: May 18, 2026</p>
                 <p><i class="fa-solid fa-clock text-accent mr-2"></i> Next: May 18, 2027</p>
               </div>
+              <div class="flex items-center justify-between pt-3 mt-4 border-t border-border">
+                <button class="text-accent text-sm font-semibold hover:underline flex items-center gap-1.5">
+                  <i class="fa-solid fa-file-lines text-xs"></i> History
+                </button>
+                <div class="flex items-center gap-1">
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Edit Vehicle">
+                    <i class="fa-solid fa-pen-to-square text-xs"></i>
+                  </button>
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Start Inspection">
+                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div class="dashboard-card p-5">
@@ -696,6 +725,19 @@
                 <p><i class="fa-solid fa-user text-accent mr-2"></i> Ravi Sharma</p>
                 <p><i class="fa-solid fa-calendar text-accent mr-2"></i> Last: May 20, 2025</p>
                 <p><i class="fa-solid fa-clock text-accent mr-2"></i> Next: Jun 15, 2026</p>
+              </div>
+              <div class="flex items-center justify-between pt-3 mt-4 border-t border-border">
+                <button class="text-accent text-sm font-semibold hover:underline flex items-center gap-1.5">
+                  <i class="fa-solid fa-file-lines text-xs"></i> History
+                </button>
+                <div class="flex items-center gap-1">
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Edit Vehicle">
+                    <i class="fa-solid fa-pen-to-square text-xs"></i>
+                  </button>
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Start Inspection">
+                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -712,6 +754,19 @@
                 <p><i class="fa-solid fa-calendar text-accent mr-2"></i> Last: Apr 30, 2026</p>
                 <p><i class="fa-solid fa-clock text-accent mr-2"></i> Next: Apr 30, 2027</p>
               </div>
+              <div class="flex items-center justify-between pt-3 mt-4 border-t border-border">
+                <button class="text-accent text-sm font-semibold hover:underline flex items-center gap-1.5">
+                  <i class="fa-solid fa-file-lines text-xs"></i> History
+                </button>
+                <div class="flex items-center gap-1">
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Edit Vehicle">
+                    <i class="fa-solid fa-pen-to-square text-xs"></i>
+                  </button>
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Start Inspection">
+                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div class="dashboard-card p-5">
@@ -726,6 +781,19 @@
                 <p><i class="fa-solid fa-user text-accent mr-2"></i> Arjun Mehta</p>
                 <p><i class="fa-solid fa-calendar text-accent mr-2"></i> Last: Apr 08, 2026</p>
                 <p><i class="fa-solid fa-clock text-accent mr-2"></i> Next: Apr 08, 2027</p>
+              </div>
+              <div class="flex items-center justify-between pt-3 mt-4 border-t border-border">
+                <button class="text-accent text-sm font-semibold hover:underline flex items-center gap-1.5">
+                  <i class="fa-solid fa-file-lines text-xs"></i> History
+                </button>
+                <div class="flex items-center gap-1">
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Edit Vehicle">
+                    <i class="fa-solid fa-pen-to-square text-xs"></i>
+                  </button>
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Start Inspection">
+                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -742,6 +810,19 @@
                 <p><i class="fa-solid fa-calendar text-accent mr-2"></i> Last: Mar 22, 2026</p>
                 <p><i class="fa-solid fa-clock text-accent mr-2"></i> Next: Mar 22, 2027</p>
               </div>
+              <div class="flex items-center justify-between pt-3 mt-4 border-t border-border">
+                <button class="text-accent text-sm font-semibold hover:underline flex items-center gap-1.5">
+                  <i class="fa-solid fa-file-lines text-xs"></i> History
+                </button>
+                <div class="flex items-center gap-1">
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Edit Vehicle">
+                    <i class="fa-solid fa-pen-to-square text-xs"></i>
+                  </button>
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Start Inspection">
+                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div class="dashboard-card p-5">
@@ -756,6 +837,19 @@
                 <p><i class="fa-solid fa-user text-accent mr-2"></i> Vikram Joshi</p>
                 <p><i class="fa-solid fa-bolt text-accent mr-2"></i> Electric · 2023</p>
                 <p><i class="fa-solid fa-shield text-accent mr-2"></i> Emissions exempt</p>
+              </div>
+              <div class="flex items-center justify-between pt-3 mt-4 border-t border-border">
+                <button class="text-accent text-sm font-semibold hover:underline flex items-center gap-1.5">
+                  <i class="fa-solid fa-file-lines text-xs"></i> History
+                </button>
+                <div class="flex items-center gap-1">
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Edit Vehicle">
+                    <i class="fa-solid fa-pen-to-square text-xs"></i>
+                  </button>
+                  <button class="p-1.5 hover:bg-hover rounded-lg text-secondary-text hover:text-accent transition" title="Start Inspection">
+                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1077,7 +1171,7 @@
                 <span class="badge-warning px-2.5 py-1 rounded-full text-xs font-bold">Maintenance</span>
               </div>
               <p class="text-xs text-secondary-text mb-3">88 Tech Park Road, Hinjewadi</p>
-              <div class="progress-bar mb-2"><div class="progress-fill" style="width: 15%; background: #F59E0B;"></div></div>
+              <div class="progress-bar mb-2"><div class="progress-fill" style="width: 15%; background: #3B82F6;"></div></div>
               <div class="flex justify-between text-xs text-secondary-text">
                 <span>0 inspections</span>
                 <span>Temporarily offline</span>
@@ -1281,12 +1375,12 @@
             datasets: [{
               label: 'Inspections',
               data: [42, 56, 38, 62, 48, 71, 33],
-              borderColor: '#16A34A',
-              backgroundColor: 'rgba(22,163,74,0.1)',
+              borderColor: '#1D4ED8',
+              backgroundColor: 'rgba(29,78,216,0.1)',
               borderWidth: 2.5,
               fill: true,
               tension: 0.4,
-              pointBackgroundColor: '#16A34A',
+              pointBackgroundColor: '#1D4ED8',
               pointBorderColor: '#fff',
               pointBorderWidth: 2,
               pointRadius: 5,
@@ -1314,7 +1408,7 @@
             labels: ['Safety', 'Emissions', 'VIN', 'Specialty'],
             datasets: [{
               data: [52, 31, 11, 6],
-              backgroundColor: ['#16A34A', '#22C55E', '#86EFAC', '#DCFCE7'],
+              backgroundColor: ['#1D4ED8', '#3B82F6', '#93C5FD', '#EFF6FF'],
               borderWidth: 0,
               hoverOffset: 8
             }]
@@ -1340,7 +1434,7 @@
             datasets: [{
               label: 'Inspections',
               data: [180, 220, 260, 310, 342, 289],
-              backgroundColor: '#16A34A',
+              backgroundColor: '#1D4ED8',
               borderRadius: 6,
               barThickness: 22
             }]
@@ -1366,7 +1460,7 @@
             labels: ['Passed', 'Failed'],
             datasets: [{
               data: [88, 12],
-              backgroundColor: ['#16A34A', '#DC2626'],
+              backgroundColor: ['#1D4ED8', '#0F172A'],
               borderWidth: 0,
               hoverOffset: 8
             }]

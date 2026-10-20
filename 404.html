@@ -16,18 +16,18 @@
   <style>
     :root {
       --bg-primary: #ffffff;
-      --text-primary: #1e293b;
+      --text-primary: #0F172A;
       --text-secondary: #475569;
-      --accent: #16A34A;
-      --accent-hover: #15803d;
+      --accent: #1D4ED8;
+      --accent-hover: #1E40AF;
     }
     
     body.dark {
-      --bg-primary: #0f172a;
+      --bg-primary: #0B132B;
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
-      --accent: #22C55E;
-      --accent-hover: #16A34A;
+      --accent: #3B82F6;
+      --accent-hover: #2563EB;
     }
     
     * {
@@ -59,7 +59,7 @@
     }
     
     /* Matched exactly with index.html */
-    .nav-logo-text {
+    .brand-logo, .nav-logo-text {
       font-size: 1.8rem !important;
       font-weight: 700 !important;
       color: var(--text-primary);
@@ -68,7 +68,7 @@
       display: inline-block;
       line-height: 1;
     }
-    .nav-logo-text span {
+    .brand-logo span, .nav-logo-text span {
       color: var(--accent);
       font-style: italic;
       font-family: 'Merriweather', serif;
@@ -109,7 +109,7 @@
       font-size: 8rem;
       font-weight: 800;
       line-height: 1;
-      background: linear-gradient(135deg, var(--accent) 0%, #34d399 100%);
+      background: linear-gradient(135deg, var(--accent) 0%, #60A5FA 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -176,7 +176,7 @@
 
   <!-- Top Bar -->
   <div class="top-bar">
-    <a href="index.html" class="nav-logo-text"><span>Apex Inspect</span></a>
+    <a href="index.html" class="brand-logo"><span>Apex Inspect</span></a>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
       <i class="fas fa-moon"></i>
     </button>
